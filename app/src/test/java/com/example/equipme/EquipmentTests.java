@@ -21,4 +21,19 @@ public class EquipmentTests {
 
         }
     }
+
+    @Test
+    public void setNotesTest() throws NoSuchFieldException {
+        try {
+            Equipment equipment = new Equipment();
+            equipment.setNotes("This employee owes me $20");
+
+            Field typeField = equipment.getClass().getDeclaredField("notes");
+            typeField.setAccessible(true);
+
+            assertEquals("This employee owes me $20", typeField.get(equipment));
+        } catch (Exception e) {
+
+        }
+    }
 }
