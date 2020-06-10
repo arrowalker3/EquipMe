@@ -23,6 +23,21 @@ public class EquipmentTests {
     }
 
     @Test
+    public void setAssignedToTest() throws NoSuchFieldException {
+        try {
+            Equipment equipment = new Equipment();
+            equipment.setAssignedTo("Major Mike");
+
+            Field typeField = equipment.getClass().getDeclaredField("assignedTo");
+            typeField.setAccessible(true);
+
+            assertEquals("Major Mike", typeField.get(equipment));
+        } catch (Exception e) {
+
+        }
+    }
+
+    @Test
     public void setNotesTest() throws NoSuchFieldException {
         try {
             Equipment equipment = new Equipment();
