@@ -7,7 +7,7 @@
     tools:context=".ViewEmployeeActivity">
 
     <TextView
-        android:id="@+id/employeeNameTextView"
+        android:id="@+id/viewEmployeeNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -17,51 +17,51 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/employeeEmailTextView"
+        android:id="@+id/viewEmployeeEmailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="50dp"
         android:text="@string/view_employee_email_text_view"
-        app:layout_constraintBaseline_toBaselineOf="@+id/employeeNameTextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/viewEmployeeNameTextView"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/employeeNumberTextView"
+        android:id="@+id/viewEmployeeNumberTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="50dp"
         android:text="@string/view_employee_number_text_view"
-        app:layout_constraintBaseline_toBaselineOf="@+id/employeeJobTitleTextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/viewEmployeeJobTitleTextView"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/employeeJobTitleTextView"
+        android:id="@+id/viewEmployeeJobTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="24dp"
         android:text="@string/view_employee_job_title_text_view"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/employeeNameTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/viewEmployeeNameTextView" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/employeeAssignedEquipmentTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="50dp"
         android:text="@string/view_employee_assigned_equipment_text_view"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/employeeJobTitleTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/viewEmployeeJobTitleTextView" />
 
     <ListView
-        android:id="@+id/employeeAssignedEquipmentListView"
+        android:id="@+id/viewEmployeeAssignedEquipmentListView"
         android:layout_width="310dp"
         android:layout_height="200dp"
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/employeeAssignedEquipmentTextView" />
 
     <TextView
         android:id="@+id/employeeAddRemoveEquipmentTextView"
@@ -71,7 +71,7 @@
         android:layout_marginTop="50dp"
         android:text="@string/employee_add_equipment_text_view"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/employeeAssignedEquipmentListView" />
+        app:layout_constraintTop_toBottomOf="@+id/viewEmployeeAssignedEquipmentListView" />
 
     <Spinner
         android:id="@+id/employeeAddRemoveEquipmentSpinner"
@@ -80,7 +80,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/employeeAssignedEquipmentListView" />
+        app:layout_constraintTop_toBottomOf="@+id/viewEmployeeAssignedEquipmentListView" />
 
     <Button
         android:id="@+id/addEquipmentButton"

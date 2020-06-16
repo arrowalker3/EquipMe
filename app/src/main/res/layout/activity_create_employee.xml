@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/employeeNameTextView"
+        android:id="@+id/viewEmployeeNameTextView"
         android:layout_width="0dp"
         android:layout_height="24dp"
         android:layout_marginStart="24dp"
@@ -26,14 +26,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/employeeEmailTextView"
+        android:id="@+id/viewEmployeeEmailTextView"
         android:layout_width="wrap_content"
         android:layout_height="24dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:text="@string/employee_brand_text_view"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/employeeNameTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/viewEmployeeNameTextView" />
 
     <Spinner
         android:id="@+id/employeeEmailSpinner"
@@ -52,7 +52,7 @@
         android:layout_marginTop="24dp"
         android:text="@string/employee_serial_text_view"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/employeeEmailTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/viewEmployeeEmailTextView" />
 
     <EditText
         android:id="@+id/employeeIdEditText"
@@ -66,7 +66,7 @@
         app:layout_constraintTop_toBottomOf="@+id/employeeEmailSpinner" />
 
     <TextView
-        android:id="@+id/employeeJobTitleTextView"
+        android:id="@+id/viewEmployeeJobTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="24dp"
         android:layout_marginStart="24dp"
@@ -94,7 +94,7 @@
         android:layout_marginTop="24dp"
         android:text="@string/employee_notes_text_view"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/employeeJobTitleTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/viewEmployeeJobTitleTextView" />
 
     <EditText
         android:id="@+id/employeeNotesEditText"
