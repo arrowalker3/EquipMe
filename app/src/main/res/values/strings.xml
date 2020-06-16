@@ -10,6 +10,7 @@
     <string name="equipment_serial_text_view">Serial Number:</string>
     <string name="equipment_assigned_to_text_view">Assigned to:</string>
     <string name="equipment_notes_text_view">Other Notes:</string>
+    <string name="equipment_date_text_view">Date Assigned:</string>
 
     <string name="employee_type_text_view">Employee Name:</string>
     <string name="employee_brand_text_view">Employee Email:</string>
