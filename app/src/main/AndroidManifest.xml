@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateEquipmentActivity"></activity>
+        <activity android:name=".ViewEquipmentActivity"></activity>
+        <activity android:name=".ViewEmployeeActivity" />
+        <activity android:name=".CreateEquipmentActivity" />
         <activity android:name=".CreateEmployeeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
