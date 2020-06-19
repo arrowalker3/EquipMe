@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".CreateEmployeeActivity">
 
-    <Spinner
-        android:id="@+id/employeeNameSpinner"
+    <EditText
+        android:id="@+id/employeeNameEditText"
         android:layout_width="185dp"
         android:layout_height="24dp"
         android:layout_marginTop="75dp"
@@ -35,14 +35,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewEmployeeNameTextView" />
 
-    <Spinner
-        android:id="@+id/employeeEmailSpinner"
+    <EditText
+        android:id="@+id/employeeEmailEditText"
         android:layout_width="185dp"
         android:layout_height="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/employeeNameSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/employeeNameEditText" />
 
     <TextView
         android:id="@+id/employeeIdTextView"
@@ -63,7 +63,7 @@
         android:ems="10"
         android:text="@string/blank"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/employeeEmailSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/employeeEmailEditText" />
 
     <TextView
         android:id="@+id/viewEmployeeJobTitleTextView"
@@ -75,7 +75,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/employeeIdTextView" />
 
-    <EditText
+    <Spinner
         android:id="@+id/employeeJobTitleSpinner"
         android:layout_width="185dp"
         android:layout_height="24dp"
@@ -106,9 +106,19 @@
         android:layout_marginBottom="24dp"
         android:ems="10"
         android:text="@string/blank"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/employeeCreateButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/employeeNotesTextView" />
+
+    <Button
+        android:id="@+id/employeeCreateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/create_employee_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
