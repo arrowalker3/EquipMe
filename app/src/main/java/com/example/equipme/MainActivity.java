@@ -47,4 +47,13 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
         Toast.makeText(MainActivity.this, "It's saved", Toast.LENGTH_SHORT).show();
     }
+
+    public void save(){
+        //save to an sd card? maybe?
+        //use it like an api?
+    }
+
+    public void load(){
+
+    }
 }
