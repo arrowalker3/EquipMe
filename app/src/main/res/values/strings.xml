@@ -12,7 +12,7 @@
     <string name="equipment_notes_text_view">Other Notes:</string>
     <string name="equipment_date_text_view">Date Assigned:</string>
 
-    <string name="employee_type_text_view">Employee Name:</string>
+    <string name="employee_name_text_view">Employee Name:</string>
     <string name="employee_brand_text_view">Employee Email:</string>
     <string name="employee_serial_text_view">Employee ID Number:</string>
     <string name="employee_assigned_to_text_view">Job Title:</string>
@@ -29,4 +29,7 @@
     <string name="plus">+</string>
     <string name="minus">-</string>
     <string name="placeholder">Placeholder</string>
+    <string name="cancel">Back</string>
+
+    <string name="employee_job_title_prompt">Choose a job title</string>
 </resources>
