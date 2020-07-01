@@ -1,8 +1,11 @@
 package com.example.equipme;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 
-public class Equipment {
+public class Equipment implements Parcelable {
     private String brand;
     private String type;
     private String serialNumber;
@@ -10,6 +13,39 @@ public class Equipment {
     private Date dateGiven;
     public String notes;
 
+    public Equipment(String brand, String type, String serialNumber, String assignedTo, Date dateGiven, String notes) {
+        this.brand = brand;
+        this.type = type;
+        this.serialNumber = serialNumber;
+        this.assignedTo = assignedTo;
+        this.dateGiven = dateGiven;
+        this.notes = notes;
+    }
+
+
+    protected Equipment(Parcel in) {
+        brand = in.readString();
+        type = in.readString();
+        serialNumber = in.readString();
+        assignedTo = in.readString();
+        notes = in.readString();
+    }
+
+    public static final Creator<Equipment> CREATOR = new Creator<Equipment>() {
+        @Override
+        public Equipment createFromParcel(Parcel in) {
+            return new Equipment(in);
+        }
+
+        @Override
+        public Equipment[] newArray(int size) {
+            return new Equipment[size];
+        }
+    };
+
+    public Equipment() {
+
+    }
 
     // Getters
     public String getType() {
@@ -65,4 +101,17 @@ public class Equipment {
 
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(brand);
+        parcel.writeString(type);
+        parcel.writeString(serialNumber);
+        parcel.writeString(assignedTo);
+        parcel.writeString(notes);
+    }
 }

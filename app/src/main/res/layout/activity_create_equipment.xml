@@ -13,7 +13,8 @@
         android:layout_marginTop="75dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:hint="Select Equipment Type" />
 
     <TextView
         android:id="@+id/equipmentTypeTextView"
@@ -42,7 +43,8 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/equipmentTypeSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/equipmentTypeSpinner"
+        android:hint="Select Equipment Brand"/>
 
     <TextView
         android:id="@+id/equipmentSerialTextView"
@@ -63,7 +65,8 @@
         android:ems="10"
         android:text="@string/blank"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/equipmentBrandSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/equipmentBrandSpinner"
+        android:hint="Serial Number"/>
 
     <TextView
         android:id="@+id/equipmentAssignedToTextView"
@@ -82,7 +85,8 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/equipmentSerialEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/equipmentSerialEditText"
+        android:hint="Select Employee"/>
 
     <TextView
         android:id="@+id/equipmentNotesTextView"

@@ -25,6 +25,20 @@
     <string name="view_employee_number_text_view">ID Number</string>
     <string name="view_employee_job_title_text_view">Job Title</string>
 
+    <string-array name="equipmentType">
+        <item>Type 1</item>
+        <item>Type 2</item>
+        <item>Type 3</item>
+        <item>Type 4</item>
+    </string-array>
+
+    <string-array name="equipmentBrand">
+        <item>Brand 1</item>
+        <item>Brand 2</item>
+        <item>Brand 3</item>
+        <item>Brand 4</item>
+    </string-array>
+
     <string name="blank"></string>
     <string name="plus">+</string>
     <string name="minus">-</string>
