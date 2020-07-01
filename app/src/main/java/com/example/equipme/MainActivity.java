@@ -28,7 +28,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<Employee> employeeList;
-    ArrayList<Equipment> equipmentList;
+    ArrayList<Equipment> equipmentList = new ArrayList<>();
 
 
     Button createEquipmentButton;  // Button to go to the new equipment activity
@@ -39,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         createEquipmentButton = findViewById(R.id.createEquipmentButton);
+
+        Intent equipmentIntent = getIntent();
+        if(equipmentIntent != null) {
+            Equipment selectedEquipment = (Equipment) equipmentIntent.getParcelableExtra("equipment");
+
+            equipmentList.add(selectedEquipment);
+        }
 
         createEquipmentButton.setOnClickListener(new View.OnClickListener() {
             @Override

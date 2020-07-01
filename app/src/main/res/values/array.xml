@@ -15,4 +15,18 @@
         <item>Compliance Officer</item>
         <item>Factoring Agent</item>
     </string-array>
+
+    <string-array name="equipmentType">
+        <item>Type 1</item>
+        <item>Type 2</item>
+        <item>Type 3</item>
+        <item>Type 4</item>
+    </string-array>
+
+    <string-array name="equipmentBrand">
+        <item>Brand 1</item>
+        <item>Brand 2</item>
+        <item>Brand 3</item>
+        <item>Brand 4</item>
+    </string-array>
 </resources>
