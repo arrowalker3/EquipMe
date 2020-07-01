@@ -15,10 +15,15 @@ import com.google.gson.Gson;
 
 import org.json.JSONArray;
 
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -59,16 +64,45 @@ public class MainActivity extends AppCompatActivity {
 
     public void saveEmployee(ArrayList employeeList) throws IOException {
         Gson employee = new Gson();
-        employee.toJson(equipmentList);
-        JSONArray employeeJSON = new JSONArray(equipmentList);
-        URLConnection connection = new URL("https://run.mocky.io/v3/059a9c60-9557-46b2-be9b-f59c6214ee3f").openConnection();
+        String employeeString = employee.toJson(employeeList);
+        URL url = new URL("https://run.mocky.io/v3/059a9c60-9557-46b2-be9b-f59c6214ee3f");
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Content-Type", "application/JSON: utf-8");
+        connection.setDoOutput(true);
+        try(OutputStream os = connection.getOutputStream()) {
+            byte[] input = employeeString.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+        /*try (BufferedReader br = new BufferedReader(new InputStreamReader((connection.getInputStream(), "utf-8"))){
+            StringBuilder response = new StringBuilder();
+            String responseLine = null;
+            while((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+        }*/
     }
 
     public void saveEquipment(ArrayList equipmentList) throws IOException {
         Gson equipment = new Gson();
-        equipment.toJson(equipmentList);
-        JSONArray equipmentJSON = new JSONArray(equipmentList);
-        URLConnection connection = new URL("https://run.mocky.io/v3/059a9c60-9557-46b2-be9b-f59c6214ee3f").openConnection();
+        //JSONArray equipmentJSON = new JSONArray(equipmentList);
+        String equipmentString = equipment.toJson(equipmentList);
+        URL url = new URL("https://run.mocky.io/v3/059a9c60-9557-46b2-be9b-f59c6214ee3f");
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Content-Type", "application/JSON: utf-8");
+        connection.setDoOutput(true);
+        try(OutputStream os = connection.getOutputStream()) {
+            byte[] input = equipmentString.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+        /*try (BufferedReader br = new BufferedReader(new InputStreamReader((connection.getInputStream(), "utf-8"))){
+            StringBuilder response = new StringBuilder();
+            String responseLine = null;
+            while((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+        }*/
     }
 
 
