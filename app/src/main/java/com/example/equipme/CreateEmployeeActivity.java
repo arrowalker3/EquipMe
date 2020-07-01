@@ -70,7 +70,7 @@ public class CreateEmployeeActivity extends AppCompatActivity {
 
         // Check Job Title Spinner
         Spinner jobTitle = findViewById(R.id.employeeJobTitleSpinner);
-        if (jobTitle.getSelectedItem().toString().equals("Choose one:")) {
+        if (jobTitle.getSelectedItemPosition() == 0) {
             return false;
         }
 
