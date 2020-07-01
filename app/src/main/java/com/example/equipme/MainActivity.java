@@ -93,8 +93,9 @@ public class MainActivity extends AppCompatActivity {
      **************************************************************************/
     public void createEmployee(View view) {
         Intent intent = new Intent(this, CreateEmployeeActivity.class);
-
         startActivity(intent);
+
+        // When Activity ends, update ListView
 
         return;
     }

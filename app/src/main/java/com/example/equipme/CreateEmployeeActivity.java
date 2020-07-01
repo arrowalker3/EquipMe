@@ -17,8 +17,6 @@ public class CreateEmployeeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_employee);
-
-        // Fill Spinner with Job Title Options
     }
 
     /**************************************************************************
@@ -76,6 +74,7 @@ public class CreateEmployeeActivity extends AppCompatActivity {
             return false;
         }
 
+        // Successfully passed all checks, good to go
         return true;
     }
 }
