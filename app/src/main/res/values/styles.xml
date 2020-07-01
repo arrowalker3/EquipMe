@@ -8,4 +8,24 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="App_EditTextStyle" parent="android:Widget.EditText">
+        <item name="android:layout_gravity">fill_horizontal</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:gravity">top|left</item>
+        <item name="android:background">@drawable/edit_text_style</item>
+    </style>
+
+    <style name="App_SpinnerStyle" parent="android:Widget.Spinner">
+        <item name="android:layout_gravity">fill_horizontal</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_margin">16dp</item>
+    </style>
+
+    <style name="App_ButtonStyle" parent="android:Widget.Button">
+        <item name="android:layout_gravity">fill_horizontal</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_margin">16dp</item>
+    </style>
+
 </resources>

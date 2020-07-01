@@ -1,7 +1,5 @@
 package com.example.equipme;
 
-
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -33,9 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
     Button createEquipmentButton;  // Button to go to the new equipment activity
 
-    SharedPreferences sharedPreferences;
-    public static final String throwawayKey = "THROW_KEY";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         String whatever;
-        sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        whatever = sharedPreferences.getString(throwawayKey, null);
         //save(employeeList, equipmentList);
         try {
             load();
@@ -64,21 +57,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void testPreferences(View view) {
-        String throwaway = "da bomb diggity";
-
-        sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        editor.putString(throwawayKey, throwaway);
-        editor.commit();
-        Toast.makeText(MainActivity.this, "It's saved", Toast.LENGTH_SHORT).show();
-    }
-
     public void saveEmployee(ArrayList employeeList) throws IOException {
         Gson employee = new Gson();
-        employee.toJson(employeeList);
-        JSONArray employeeJSON = new JSONArray(employeeList);
+        employee.toJson(equipmentList);
+        JSONArray employeeJSON = new JSONArray(equipmentList);
         URLConnection connection = new URL("https://run.mocky.io/v3/059a9c60-9557-46b2-be9b-f59c6214ee3f").openConnection();
     }
 
@@ -103,5 +85,35 @@ public class MainActivity extends AppCompatActivity {
         while((hold = reader.readLine()) != null)
             stringBuilder.append(hold);
         stringBuilder.toString();
+    }
+
+    /**************************************************************************
+     * CREATE EMPLOYEE
+     *
+     * Called whenever the "Create Employee" button is pressed. Creates a new
+     * intent and changes the screen to CreateEmployeeActivity.
+     *
+     * @param view - Current view
+     **************************************************************************/
+    public void createEmployee(View view) {
+        Intent intent = new Intent(this, CreateEmployeeActivity.class);
+        startActivity(intent);
+
+        // When Activity ends, update ListView
+
+        return;
+    }
+
+    /**************************************************************************
+     * ADD EMPLOYEE
+     *
+     * Called by CreateEmployeeActivity. Adds the given employee to the array
+     *
+     * @param employee - Employee to add to the list of employees
+     **************************************************************************/
+    public void addEmployee(Employee employee) {
+        employeeList.add(employee);
+
+        return;
     }
 }
