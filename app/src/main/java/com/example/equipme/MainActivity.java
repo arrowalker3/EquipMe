@@ -1,7 +1,5 @@
 package com.example.equipme;
 
-
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -59,21 +57,27 @@ public class MainActivity extends AppCompatActivity {
 
         String whatever;
         //save(employeeList, equipmentList);
+        try {
+            load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void save(ArrayList employeeList, ArrayList equipmentList){
+    public void saveEmployee(ArrayList employeeList) throws IOException {
         Gson employee = new Gson();
-        Gson equipment = new Gson();
-        employee.toJson(employeeList);
-        equipment.toJson(equipmentList);
-        JSONArray employeeJSON = new JSONArray(employeeList);
-        JSONArray equipmentJSON = new JSONArray(equipmentList);
-        //This toast goes so it is getting made into Json
-        //Toast.makeText(MainActivity.this, "Wow its Json now.", Toast.LENGTH_SHORT).show()
-        //connect to database and save to it
-        //Load into a file on the database
-
+        employee.toJson(equipmentList);
+        JSONArray employeeJSON = new JSONArray(equipmentList);
+        URLConnection connection = new URL("https://run.mocky.io/v3/059a9c60-9557-46b2-be9b-f59c6214ee3f").openConnection();
     }
+
+    public void saveEquipment(ArrayList equipmentList) throws IOException {
+        Gson equipment = new Gson();
+        equipment.toJson(equipmentList);
+        JSONArray equipmentJSON = new JSONArray(equipmentList);
+        URLConnection connection = new URL("https://run.mocky.io/v3/059a9c60-9557-46b2-be9b-f59c6214ee3f").openConnection();
+    }
+
 
     public void load() throws IOException {
         //access database
