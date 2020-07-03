@@ -47,7 +47,7 @@ public class CreateEmployeeActivity extends AppCompatActivity {
                 // Send to MainActivity
                 Intent intent = new Intent();
                 intent.putExtra("employeeJson", employeeJson);
-                setResult(1, intent);
+                setResult(RESULT_OK, intent);
 
                 // Go to MainActivity
                 finish();

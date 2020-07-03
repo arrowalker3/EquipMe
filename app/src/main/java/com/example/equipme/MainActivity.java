@@ -130,13 +130,13 @@ public class MainActivity extends AppCompatActivity {
          * message, so that might be it.
          * -Trey
          *****************/
-        InputStream responseStream = connection.getInputStream();
+/*        InputStream responseStream = connection.getInputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(responseStream));
         StringBuilder stringBuilder = new StringBuilder();
         String hold;
         while((hold = reader.readLine()) != null)
             stringBuilder.append(hold);
-        stringBuilder.toString();
+        stringBuilder.toString();*/
     }
 
     /**************************************************************************
@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * When a "Create" Activity completes, it sets the result as a new element
      * in the intent. This function assigns that new object to the appropriate
-     * list.
+     * list, then saves the list.
      *
      * @param requestCode - the code showing which Activity is sending the result.
      * @param resultCode - Unimportant for our purposes.
@@ -180,11 +180,18 @@ public class MainActivity extends AppCompatActivity {
 
         // Check request code
         // Request code 1 == result from CreateEmployeeActivity
-        if (requestCode == 1) {
+        if (requestCode == 1 && resultCode == RESULT_OK) {
             String json = data.getStringExtra("employeeJson");
             Gson gson = new Gson();
             Employee createdEmployee = gson.fromJson(json, Employee.class);
             employeeList.add(createdEmployee);
+
+            // Save
+            try {
+                saveEmployee(employeeList);
+            } catch (Exception e) {
+                Toast.makeText(this, "Unable to save Employee List", Toast.LENGTH_SHORT).show();
+            }
         }
 
 
