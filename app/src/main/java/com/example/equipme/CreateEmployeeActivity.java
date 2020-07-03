@@ -34,8 +34,9 @@ public class CreateEmployeeActivity extends AppCompatActivity {
      **************************************************************************/
     public void addEmployeeToList(View view) {
         if (allInformationFilled()) {
+
             // Check for unique ID
-            if (idIsUnique()) {
+            if (idIsUnique(getIntent().getExtras().getStringArrayList("idList"))) {
                 // Create Employee
                 Employee employee = createEmployee();
 
@@ -105,10 +106,15 @@ public class CreateEmployeeActivity extends AppCompatActivity {
      * Checks that the ID entered by the user doesn't already exist in the
      * arraylist of employees.
      **************************************************************************/
-    public boolean idIsUnique() {
+    public boolean idIsUnique(ArrayList<String> idList) {
         boolean isUnique = true;
+        String newId = ((EditText) findViewById(R.id.employeeIdEditText)).getText().toString();
 
-
+        for (int i = 0; isUnique && (i < idList.size()); i++) {
+            if (newId.equals(idList.get(i))) {
+                isUnique = false;
+            }
+        }
 
         return isUnique;
     }

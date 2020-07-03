@@ -57,8 +57,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        String whatever;
-        //save(employeeList, equipmentList);
+        // Load up data
         try {
             load();
         } catch (IOException e) {
@@ -116,6 +115,14 @@ public class MainActivity extends AppCompatActivity {
         //load it in.
         //link: https://run.mocky.io/v3/fc3ebf63-a032-4f1b-acf3-e65a23770054
         URLConnection connection = new URL("https://run.mocky.io/v3/fc3ebf63-a032-4f1b-acf3-e65a23770054").openConnection();
+
+        /******************
+         * IMPORTANT!!!!
+         * The line of code under this crashes the app whenever I try to run it. Not sure what's happening, but
+         * I narrowed it down to here. When I check the link in a browser, I just get a "404: Not found" error
+         * message, so that might be it.
+         * -Trey
+         *****************/
         InputStream responseStream = connection.getInputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(responseStream));
         StringBuilder stringBuilder = new StringBuilder();
@@ -134,8 +141,17 @@ public class MainActivity extends AppCompatActivity {
      * @param view - Current view
      **************************************************************************/
     public void createEmployee(View view) {
+        // Get a list of employee IDs
+        ArrayList<String> idList = new ArrayList<>();
+        for (int i = 0; i < employeeList.size(); i++) {
+            idList.add(employeeList.get(i).getEmployeeNumber());
+        }
+
+        // Create intent and give it the list of employee IDs
         Intent intent = new Intent(this, CreateEmployeeActivity.class);
-        startActivityForResult(intent, 1);
+        intent.putExtra("idList", idList);
+
+        startActivityForResult(intent, 1); // Request code for CreateEmployee == 1
 
         return;
     }
