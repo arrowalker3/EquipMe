@@ -116,13 +116,6 @@ public class MainActivity extends AppCompatActivity {
         //link: https://run.mocky.io/v3/fc3ebf63-a032-4f1b-acf3-e65a23770054
         URL url = new URL("https://run.mocky.io/v3/059a9c60-9557-46b2-be9b-f59c6214ee3f");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        /******************
-         * IMPORTANT!!!!
-         * The line of code under this crashes the app whenever I try to run it. Not sure what's happening, but
-         * I narrowed it down to here. When I check the link in a browser, I just get a "404: Not found" error
-         * message, so that might be it.
-         * -Trey
-         *****************/
         InputStream responseStream = connection.getInputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(responseStream));
         StringBuilder stringBuilder = new StringBuilder();
@@ -164,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
      * list, then saves the list.
      *
      * @param requestCode - the code showing which Activity is sending the result.
-     * @param resultCode - Unimportant for our purposes.
+     * @param resultCode - Value is "RESULT_OK" if the object was created successfully.
      * @param data - The intent used to send back the new object.
      **************************************************************************/
     @Override
