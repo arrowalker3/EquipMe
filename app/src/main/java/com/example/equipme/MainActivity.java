@@ -63,13 +63,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        // Load up data
-        try {
-            load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public void saveEmployee(ArrayList employeeList) throws IOException {
@@ -121,8 +114,8 @@ public class MainActivity extends AppCompatActivity {
         //use mocky.io for tests
         //load it in.
         //link: https://run.mocky.io/v3/fc3ebf63-a032-4f1b-acf3-e65a23770054
-        URLConnection connection = new URL("https://run.mocky.io/v3/fc3ebf63-a032-4f1b-acf3-e65a23770054").openConnection();
-
+        URL url = new URL("https://run.mocky.io/v3/059a9c60-9557-46b2-be9b-f59c6214ee3f");
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         /******************
          * IMPORTANT!!!!
          * The line of code under this crashes the app whenever I try to run it. Not sure what's happening, but
