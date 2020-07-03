@@ -55,11 +55,11 @@ public class MainActivity extends AppCompatActivity {
 
         String whatever;
         //save(employeeList, equipmentList);
-        try {
+        /*try {
             load();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     public void saveEmployee(ArrayList employeeList) throws IOException {
