@@ -24,8 +24,16 @@
 
     <style name="App_ButtonStyle" parent="android:Widget.Button">
         <item name="android:layout_gravity">fill_horizontal</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_margin">16dp</item>
+    </style>
+
+    <style name="App_TextViewStyle" parent="android:Widget.TextView">
+        <item name="android:layout_gravity">fill_horizontal</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
     </style>
 
 </resources>
