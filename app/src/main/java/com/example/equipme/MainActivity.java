@@ -41,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Instantiate the 2 main lists
+        employeeList = new ArrayList<>();
+        equipmentList = new ArrayList<>();
+
         createEquipmentButton = findViewById(R.id.createEquipmentButton);
 
         createEquipmentButton.setOnClickListener(new View.OnClickListener() {
@@ -131,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
      **************************************************************************/
     public void createEmployee(View view) {
         Intent intent = new Intent(this, CreateEmployeeActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, 1);
 
         // When Activity ends, update ListView
 
@@ -139,15 +143,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**************************************************************************
-     * ADD EMPLOYEE
+     * ON ACTIVITY RESULT
      *
-     * Called by CreateEmployeeActivity. Adds the given employee to the array
+     * When a "Create" Activity completes, it sets the result as a new element
+     * in the intent. This function assigns that new object to the appropriate
+     * list.
      *
-     * @param employee - Employee to add to the list of employees
+     * @param requestCode - the code showing which Activity is sending the result.
+     * @param resultCode - Unimportant for our purposes.
+     * @param data - The intent used to send back the new object.
      **************************************************************************/
-    public void addEmployee(Employee employee) {
-        employeeList.add(employee);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-        return;
+        // Check request code
+        // Request code 1 == result from CreateEmployeeActivity
+        if (requestCode == 1) {
+            String json = data.getStringExtra("employeeJson");
+            Gson gson = new Gson();
+            Employee createdEmployee = gson.fromJson(json, Employee.class);
+            employeeList.add(createdEmployee);
+        }
     }
+
+
 }

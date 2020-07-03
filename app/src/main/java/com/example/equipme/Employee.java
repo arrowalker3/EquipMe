@@ -1,6 +1,7 @@
 package com.example.equipme;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class Employee {
 
@@ -8,7 +9,7 @@ public class Employee {
     String name;
     String emailAddress;
     String employeeNumber;
-    Array equipment;
+    ArrayList<Equipment> equipment;
     String notes;
 
     Employee(){}
@@ -25,8 +26,8 @@ public class Employee {
     void setEmployeeNumber(String number){this.employeeNumber = number;}
     String getEmployeeNumber(){return employeeNumber;}
 
-    void setEquipment(Array equip){this.equipment = equip;}
-    Array getEquipment(){return equipment;}
+    void setEquipment(ArrayList equip){this.equipment = equip;}
+    ArrayList<Equipment> getEquipment(){return equipment;}
 
     void setNotes(String note){this.notes = note;}
     String getNotes(){return notes;}
