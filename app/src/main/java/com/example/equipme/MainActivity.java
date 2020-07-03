@@ -31,7 +31,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<Employee> employeeList;
-    ArrayList<Equipment> equipmentList;
+    ArrayList<Equipment> equipmentList = new ArrayList<>();
 
 
     Button createEquipmentButton;  // Button to go to the new equipment activity
@@ -41,7 +41,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Instantiate the 2 main lists
+        employeeList = new ArrayList<>();
+        equipmentList = new ArrayList<>();
+
         createEquipmentButton = findViewById(R.id.createEquipmentButton);
+
+        Intent equipmentIntent = getIntent();
+        if(equipmentIntent != null) {
+            Equipment selectedEquipment = (Equipment) equipmentIntent.getParcelableExtra("equipment");
+
+            equipmentList.add(selectedEquipment);
+        }
 
         createEquipmentButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,9 +64,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
         String whatever;
         //save(employeeList, equipmentList);
         /*try {
+=======
+        // Load up data
+        try {
+>>>>>>> d73f4b9060b198cbc1a5165363b256dd8198c60b
             load();
         } catch (IOException e) {
             e.printStackTrace();
@@ -112,6 +128,13 @@ public class MainActivity extends AppCompatActivity {
         //load it in.
         //link: https://run.mocky.io/v3/fc3ebf63-a032-4f1b-acf3-e65a23770054
         URLConnection connection = new URL("https://run.mocky.io/v3/fc3ebf63-a032-4f1b-acf3-e65a23770054").openConnection();
+        /******************
+         * IMPORTANT!!!!
+         * The line of code under this crashes the app whenever I try to run it. Not sure what's happening, but
+         * I narrowed it down to here. When I check the link in a browser, I just get a "404: Not found" error
+         * message, so that might be it.
+         * -Trey
+         *****************/
         InputStream responseStream = connection.getInputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(responseStream));
         StringBuilder stringBuilder = new StringBuilder();
@@ -130,24 +153,48 @@ public class MainActivity extends AppCompatActivity {
      * @param view - Current view
      **************************************************************************/
     public void createEmployee(View view) {
-        Intent intent = new Intent(this, CreateEmployeeActivity.class);
-        startActivity(intent);
+        // Get a list of employee IDs
+        ArrayList<String> idList = new ArrayList<>();
+        for (int i = 0; i < employeeList.size(); i++) {
+            idList.add(employeeList.get(i).getEmployeeNumber());
+        }
 
-        // When Activity ends, update ListView
+        // Create intent and give it the list of employee IDs
+        Intent intent = new Intent(this, CreateEmployeeActivity.class);
+        intent.putExtra("idList", idList);
+
+        startActivityForResult(intent, 1); // Request code for CreateEmployee == 1
 
         return;
     }
 
     /**************************************************************************
-     * ADD EMPLOYEE
+     * ON ACTIVITY RESULT
      *
-     * Called by CreateEmployeeActivity. Adds the given employee to the array
+     * When a "Create" Activity completes, it sets the result as a new element
+     * in the intent. This function assigns that new object to the appropriate
+     * list.
      *
-     * @param employee - Employee to add to the list of employees
+     * @param requestCode - the code showing which Activity is sending the result.
+     * @param resultCode - Unimportant for our purposes.
+     * @param data - The intent used to send back the new object.
      **************************************************************************/
-    public void addEmployee(Employee employee) {
-        employeeList.add(employee);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-        return;
+        // Check request code
+        // Request code 1 == result from CreateEmployeeActivity
+        if (requestCode == 1) {
+            String json = data.getStringExtra("employeeJson");
+            Gson gson = new Gson();
+            Employee createdEmployee = gson.fromJson(json, Employee.class);
+            employeeList.add(createdEmployee);
+        }
+
+
+        // When results are processed, update ListView
     }
+
+
 }

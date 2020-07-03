@@ -32,4 +32,10 @@
     <string name="cancel">Back</string>
 
     <string name="employee_job_title_prompt">Choose a job title</string>
+
+    <string name="equipment_brand_prompt">Choose equipment brand</string>
+
+    <string name="equipment_type_prompt">Choose equipment type</string>
+
+    <string name="assigned_to_prompt">Choose employee</string>
 </resources>
