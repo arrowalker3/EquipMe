@@ -123,13 +123,13 @@ public class MainActivity extends AppCompatActivity {
          * message, so that might be it.
          * -Trey
          *****************/
-/*        InputStream responseStream = connection.getInputStream();
+        InputStream responseStream = connection.getInputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(responseStream));
         StringBuilder stringBuilder = new StringBuilder();
         String hold;
         while((hold = reader.readLine()) != null)
             stringBuilder.append(hold);
-        stringBuilder.toString();*/
+        stringBuilder.toString();
     }
 
     /**************************************************************************
