@@ -137,8 +137,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CreateEmployeeActivity.class);
         startActivityForResult(intent, 1);
 
-        // When Activity ends, update ListView
-
         return;
     }
 
@@ -165,6 +163,9 @@ public class MainActivity extends AppCompatActivity {
             Employee createdEmployee = gson.fromJson(json, Employee.class);
             employeeList.add(createdEmployee);
         }
+
+
+        // When results are processed, update ListView
     }
 
 

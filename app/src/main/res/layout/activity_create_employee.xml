@@ -24,10 +24,7 @@
 
             <TextView
                 android:id="@+id/viewEmployeeNameTextView"
-                android:layout_height="match_parent"
-                android:layout_gravity="fill_horizontal"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                style="@style/App_TextViewStyle"
                 android:text="@string/employee_name_text_view" />
 
             <EditText
@@ -36,10 +33,7 @@
 
             <TextView
                 android:id="@+id/viewEmployeeEmailTextView"
-                android:layout_height="match_parent"
-                android:layout_gravity="fill_horizontal"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                style="@style/App_TextViewStyle"
                 android:text="@string/employee_brand_text_view" />
 
             <EditText
@@ -48,10 +42,7 @@
 
             <TextView
                 android:id="@+id/employeeIdTextView"
-                android:layout_height="match_parent"
-                android:layout_gravity="fill_horizontal"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                style="@style/App_TextViewStyle"
                 android:text="@string/employee_serial_text_view" />
 
             <EditText
@@ -60,10 +51,7 @@
 
             <TextView
                 android:id="@+id/viewEmployeeJobTitleTextView"
-                android:layout_height="match_parent"
-                android:layout_gravity="fill_horizontal"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                style="@style/App_TextViewStyle"
                 android:text="@string/employee_assigned_to_text_view" />
 
             <Spinner
@@ -75,10 +63,7 @@
 
             <TextView
                 android:id="@+id/employeeNotesTextView"
-                android:layout_height="match_parent"
-                android:layout_gravity="fill_horizontal"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                style="@style/App_TextViewStyle"
                 android:text="@string/employee_notes_text_view" />
 
             <EditText
@@ -91,8 +76,6 @@
             <Button
                 android:id="@+id/employeeCreateButton"
                 style="@style/App_ButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
                 android:onClick="addEmployeeToList"
                 android:text="@string/create_employee_button" />
 
