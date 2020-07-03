@@ -29,16 +29,22 @@
 
             <Spinner
                 android:id="@+id/equipmentTypeSpinner"
-                style="@style/App_SpinnerStyle" />
+                style="@style/App_SpinnerStyle"
+                android:entries="@array/equipment_type_options"
+                android:prompt="@string/equipment_type_prompt"
+                android:text="@string/blank" />
 
             <TextView
                 android:id="@+id/equipmentBrandTextView"
                 style="@style/App_TextViewStyle"
                 android:text="@string/equipment_brand_text_view" />
 
-            <Spinner
+           <Spinner
                 android:id="@+id/equipmentBrandSpinner"
-                style="@style/App_SpinnerStyle" />
+                style="@style/App_SpinnerStyle"
+                android:entries="@array/equipment_brand_options"
+                android:prompt="@string/equipment_brand_prompt"
+                android:text="@string/blank" />
 
             <TextView
                 android:id="@+id/equipmentSerialTextView"
@@ -56,7 +62,10 @@
 
             <Spinner
                 android:id="@+id/equipmentAssignedToSpinner"
-                style="@style/App_SpinnerStyle"/>
+                style="@style/App_SpinnerStyle"
+                android:entries="@array/assigned_to_options"
+                android:prompt="@string/assigned_to_prompt"
+                android:text="@string/blank" />
 
             <TextView
                 android:id="@+id/equipmentNotesTextView"
