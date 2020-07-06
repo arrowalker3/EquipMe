@@ -65,6 +65,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**************************************************************************
+     * SAVE EMPLOYEE
+     *
+     * Saves the current instance of employeeList
+     * Currently saves the list to a fake url
+     *
+     * @param employeeList - the list of employees created
+     **************************************************************************/
     public void saveEmployee(ArrayList employeeList) throws IOException {
         Gson employee = new Gson();
         String employeeString = employee.toJson(employeeList);
@@ -86,6 +94,14 @@ public class MainActivity extends AppCompatActivity {
         }*/
     }
 
+    /**************************************************************************
+     * SAVE EQUIPMENT
+     *
+     * Saves the current instance of equipmentList
+     * Currently saves the list to a fake url
+     *
+     * @param equipmentList - the list of equipment created
+     **************************************************************************/
     public void saveEquipment(ArrayList equipmentList) throws IOException {
         Gson equipment = new Gson();
         //JSONArray equipmentJSON = new JSONArray(equipmentList);
@@ -108,7 +124,12 @@ public class MainActivity extends AppCompatActivity {
         }*/
     }
 
-
+    /**************************************************************************
+     * LOAD
+     *
+     * Loads saved data from an outside source
+     * Currently loads nothing from a fake url
+     **************************************************************************/
     public void load() throws IOException {
         //access database
         //use mocky.io for tests
