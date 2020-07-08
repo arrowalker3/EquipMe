@@ -39,4 +39,8 @@
         <item>Employee 3</item>
         <item>Employee 4</item>
     </string-array>
+
+    <string-array name="main_list_display">
+
+    </string-array>
 </resources>

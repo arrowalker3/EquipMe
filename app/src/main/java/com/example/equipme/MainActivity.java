@@ -8,7 +8,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.JsonReader;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -31,8 +33,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<Employee> employeeList;
-    ArrayList<Equipment> equipmentList = new ArrayList<>();
-
+    ArrayList<Equipment> equipmentList;
 
     Button createEquipmentButton;  // Button to go to the new equipment activity
 
@@ -63,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Display Employees at start
+        updateListViewEmployees(makeFakeEmployees());
     }
 
     /**************************************************************************
@@ -158,12 +162,12 @@ public class MainActivity extends AppCompatActivity {
         // Get a list of employee IDs
         ArrayList<String> idList = new ArrayList<>();
         for (int i = 0; i < employeeList.size(); i++) {
-            idList.add(employeeList.get(i).getEmployeeNumber());
+            idList.add(employeeList.get(i).getMyKey());
         }
 
         // Create intent and give it the list of employee IDs
         Intent intent = new Intent(this, CreateEmployeeActivity.class);
-        intent.putExtra("idList", idList);
+        intent.putExtra("keyList", idList);
 
         startActivityForResult(intent, 1); // Request code for CreateEmployee == 1
 
@@ -199,11 +203,72 @@ public class MainActivity extends AppCompatActivity {
             } catch (Exception e) {
                 Toast.makeText(this, "Unable to save Employee List", Toast.LENGTH_SHORT).show();
             }
+
+            // Display Employees
+            updateListViewEmployees(employeeList);
+        }
+    }
+
+    /***********************************************************************
+     * Create array of employees to test list view
+     **********************************************************************/
+    public ArrayList<Employee> makeFakeEmployees() {
+        ArrayList<Employee> listOfEmployees = new ArrayList<>();
+
+        Employee employeeToAdd = new Employee();
+        employeeToAdd.setName("John Doe");
+        for (int i = 0; i < 25; i++) {
+            listOfEmployees.add(employeeToAdd);
         }
 
-
-        // When results are processed, update ListView
+        return listOfEmployees;
     }
 
 
+
+    /**************************************************************************
+     * UPDATE LIST VIEW
+     *
+     * Takes the given array of Employee objects and
+     * puts the Display String in the Listview
+     *
+     * @param displayList - The Arraylist to show in the Listview
+     **************************************************************************/
+    public void updateListViewEmployees(ArrayList<Employee> displayList) {
+        // Create Array just with Displayable strings
+        ArrayList<String> displayStrings = new ArrayList<>();
+        for (int i = 0; i < displayList.size(); i++) {
+            displayStrings.add(displayList.get(i).getDisplayString());
+        }
+
+        // Set ListView
+        ArrayAdapter<String> arrayAdapter =
+                new ArrayAdapter<>(this, R.layout.list_view, R.id.textView, displayStrings);
+        ListView mainDisplay = (ListView) findViewById(R.id.mainDisplay);
+        mainDisplay.setAdapter(arrayAdapter);
+
+        // Set onClickListeners
+    }
+
+    /**************************************************************************
+     * UPDATE LIST VIEW EQUIPMENT
+     *
+     * Takes the given array of Equipment objects and
+     * puts the Display String in the Listview
+     *
+     * @param displayList - The Arraylist to show in the Listview
+     **************************************************************************/
+    public void updateListViewEquipment(ArrayList<Equipment> displayList) {
+        // Create Array just with Displayable strings
+        ArrayList<String> displayStrings = new ArrayList<>();
+        for (int i = 0; i < displayList.size(); i++) {
+            displayStrings.add(displayList.get(i).getDisplayString());
+        }
+
+        // Set ListView
+        ArrayAdapter<String> arrayAdapter =
+                new ArrayAdapter<>(this, R.layout.list_view, R.id.textView, displayStrings);
+        ListView mainDisplay = (ListView) findViewById(R.id.mainDisplay);
+        mainDisplay.setAdapter(arrayAdapter);
+    }
 }

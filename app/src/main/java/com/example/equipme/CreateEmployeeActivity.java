@@ -34,11 +34,11 @@ public class CreateEmployeeActivity extends AppCompatActivity {
      **************************************************************************/
     public void addEmployeeToList(View view) {
         if (allInformationFilled()) {
+            // Create Employee
+            Employee employee = createEmployee();
 
             // Check for unique ID
-            if (idIsUnique(getIntent().getExtras().getStringArrayList("idList"))) {
-                // Create Employee
-                Employee employee = createEmployee();
+            if (idIsUnique(getIntent().getExtras().getStringArrayList("keyList"), employee)) {
 
                 // Convert to JSON string
                 Gson gson = new Gson();
@@ -106,12 +106,12 @@ public class CreateEmployeeActivity extends AppCompatActivity {
      * Checks that the ID entered by the user doesn't already exist in the
      * arraylist of employees.
      **************************************************************************/
-    public boolean idIsUnique(ArrayList<String> idList) {
+    public boolean idIsUnique(ArrayList<String> keyList, Employee createdEmployee) {
         boolean isUnique = true;
-        String newId = ((EditText) findViewById(R.id.employeeIdEditText)).getText().toString();
+        String newKey = createdEmployee.getMyKey();
 
-        for (int i = 0; isUnique && (i < idList.size()); i++) {
-            if (newId.equals(idList.get(i))) {
+        for (int i = 0; isUnique && (i < keyList.size()); i++) {
+            if (newKey.equals(keyList.get(i))) {
                 isUnique = false;
             }
         }

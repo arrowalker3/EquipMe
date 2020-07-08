@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import java.util.Date;
 
-public class Equipment implements Parcelable {
+public class Equipment extends Displayable implements Parcelable {
     private String brand;
     private String type;
     private String serialNumber;
@@ -75,6 +75,7 @@ public class Equipment implements Parcelable {
     // Setters
     public void setBrand(String brand) {
         this.brand = brand;
+        setMyKey();
     }
 
     public void setType(String type) {
@@ -83,6 +84,7 @@ public class Equipment implements Parcelable {
 
     public void setSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
+        setMyKey();
     }
 
     public void setAssignedTo(String assignedTo) {
@@ -113,5 +115,28 @@ public class Equipment implements Parcelable {
         parcel.writeString(serialNumber);
         parcel.writeString(assignedTo);
         parcel.writeString(notes);
+    }
+
+    /**************************************************************************
+     * GET DISPLAY STRING
+     *
+     * Returns the single string to represent the object in a list
+     **************************************************************************/
+    @Override
+    public String getDisplayString() {
+        return brand + " " + type;
+    }
+
+    /**************************************************************************
+     * SET MY KEY
+     *
+     * Sets key according to internal values. For Equipment, it's based on brand
+     * and serial number
+     **************************************************************************/
+    @Override
+    public void setMyKey() {
+        if (brand != null && serialNumber != null) {
+            myKey = brand + serialNumber;
+        }
     }
 }
