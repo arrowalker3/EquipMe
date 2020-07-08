@@ -2,11 +2,8 @@ package com.example.equipme;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.JsonReader;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,20 +12,13 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import org.json.JSONArray;
-
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,7 +26,9 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Equipment> equipmentList;
     ArrayList<Displayable> currentDisplayList;
 
-    Button createEquipmentButton;  // Button to go to the new equipment activity
+    Button createEquipmentButton; // Button to go to the new equipment activity
+    Button viewEmployeeButton; //Button to update the list view for view employee
+    Button viewEquipmentButton; //Button to update the list view for view equipment
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         currentDisplayList = new ArrayList<>();
 
         createEquipmentButton = findViewById(R.id.createEquipmentButton);
+        viewEmployeeButton = findViewById((R.id.viewEmployeeButton));
+        viewEquipmentButton = findViewById((R.id.viewEquipmentButton));
 
         Intent equipmentIntent = getIntent();
         if(equipmentIntent != null) {
@@ -67,8 +61,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Display Employees at start
-        updateListViewEmployees(makeFakeEmployees());
+        viewEmployeeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateListViewEmployees(makeFakeEmployees());
+            }
+        });
+
+        viewEquipmentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateListViewEquipment(makeFakeEquipment());
+            }
+        });
+
     }
 
     /**************************************************************************
@@ -226,6 +232,21 @@ public class MainActivity extends AppCompatActivity {
         return listOfEmployees;
     }
 
+    /***********************************************************************
+     * Create array of equipment to test list view
+     **********************************************************************/
+    public ArrayList<Equipment> makeFakeEquipment() {
+        ArrayList<Equipment> listOfEquipment = new ArrayList<>();
+
+        Equipment equipmentToAdd = new Equipment();
+        equipmentToAdd.setBrand("Brand");
+        equipmentToAdd.setType("Hammer");
+        for (int i = 0; i < 25; i++) {
+            listOfEquipment.add(equipmentToAdd);
+        }
+
+        return listOfEquipment;
+    }
 
 
     /**************************************************************************
