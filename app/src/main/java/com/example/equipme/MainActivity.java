@@ -34,6 +34,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     ArrayList<Employee> employeeList;
     ArrayList<Equipment> equipmentList;
+    ArrayList<Displayable> currentDisplayList;
 
     Button createEquipmentButton;  // Button to go to the new equipment activity
 
@@ -42,9 +43,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Instantiate the 2 main lists
+        // Instantiate the 3 main lists
         employeeList = new ArrayList<>();
         equipmentList = new ArrayList<>();
+        currentDisplayList = new ArrayList<>();
 
         createEquipmentButton = findViewById(R.id.createEquipmentButton);
 
@@ -235,17 +237,12 @@ public class MainActivity extends AppCompatActivity {
      * @param displayList - The Arraylist to show in the Listview
      **************************************************************************/
     public void updateListViewEmployees(ArrayList<Employee> displayList) {
-        // Create Array just with Displayable strings
-        ArrayList<String> displayStrings = new ArrayList<>();
+        // Move the display list to the current display
         for (int i = 0; i < displayList.size(); i++) {
-            displayStrings.add(displayList.get(i).getDisplayString());
+            currentDisplayList.add(displayList.get(i));
         }
 
-        // Set ListView
-        ArrayAdapter<String> arrayAdapter =
-                new ArrayAdapter<>(this, R.layout.list_view, R.id.textView, displayStrings);
-        ListView mainDisplay = (ListView) findViewById(R.id.mainDisplay);
-        mainDisplay.setAdapter(arrayAdapter);
+        fillListView();
 
         // Set onClickListeners
     }
@@ -259,10 +256,26 @@ public class MainActivity extends AppCompatActivity {
      * @param displayList - The Arraylist to show in the Listview
      **************************************************************************/
     public void updateListViewEquipment(ArrayList<Equipment> displayList) {
+        // Move the display list to the current display
+        for (int i = 0; i < displayList.size(); i++) {
+            currentDisplayList.add(displayList.get(i));
+        }
+
+        fillListView();
+
+        // Set onClickListeners
+    }
+
+    /**************************************************************************
+     * UPDATE LIST VIEW EQUIPMENT
+     *
+     * Takes the currentDisplayList and uses that to fill the ListView
+     **************************************************************************/
+    public void fillListView() {
         // Create Array just with Displayable strings
         ArrayList<String> displayStrings = new ArrayList<>();
-        for (int i = 0; i < displayList.size(); i++) {
-            displayStrings.add(displayList.get(i).getDisplayString());
+        for (int i = 0; i < currentDisplayList.size(); i++) {
+            displayStrings.add(currentDisplayList.get(i).getDisplayString());
         }
 
         // Set ListView
