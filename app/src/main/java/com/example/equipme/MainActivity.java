@@ -237,6 +237,9 @@ public class MainActivity extends AppCompatActivity {
      * @param displayList - The Arraylist to show in the Listview
      **************************************************************************/
     public void updateListViewEmployees(ArrayList<Employee> displayList) {
+        // Clear current display
+        currentDisplayList.clear();
+
         // Move the display list to the current display
         for (int i = 0; i < displayList.size(); i++) {
             currentDisplayList.add(displayList.get(i));
@@ -256,6 +259,9 @@ public class MainActivity extends AppCompatActivity {
      * @param displayList - The Arraylist to show in the Listview
      **************************************************************************/
     public void updateListViewEquipment(ArrayList<Equipment> displayList) {
+        // Clear current display
+        currentDisplayList.clear();
+
         // Move the display list to the current display
         for (int i = 0; i < displayList.size(); i++) {
             currentDisplayList.add(displayList.get(i));
