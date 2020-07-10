@@ -81,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        updateListViewEmployees(makeFakeEmployees());
+
         viewEquipmentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
