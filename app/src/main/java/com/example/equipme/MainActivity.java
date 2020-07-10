@@ -260,8 +260,11 @@ public class MainActivity extends AppCompatActivity {
 
         Employee employeeToAdd = new Employee();
         employeeToAdd.setName("John Doe");
-        for (int i = 0; i < 25; i++) {
+        Employee otherEmployee = new Employee();
+        otherEmployee.setName("Johnny Appleseed");
+        for (int i = 0; i < 15; i++) {
             listOfEmployees.add(employeeToAdd);
+            listOfEmployees.add(otherEmployee);
         }
 
         return listOfEmployees;
