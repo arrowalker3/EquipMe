@@ -11,6 +11,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.SearchView;
+
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -33,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Employee> employeeList;
     ArrayList<Equipment> equipmentList = new ArrayList<>();
 
+    SearchView searchView;
+    ListView listView;
+    ArrayAdapter adapter;
+
 
     Button createEquipmentButton;  // Button to go to the new equipment activity
 
@@ -40,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        searchView = findViewById(R.id.searchView);
+        //listView = findViewById(R.id.listView);
 
         // Instantiate the 2 main lists
         employeeList = new ArrayList<>();
