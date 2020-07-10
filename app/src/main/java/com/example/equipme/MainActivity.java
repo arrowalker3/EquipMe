@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     SearchView searchView;
     ListView listView;
     ArrayAdapter adapter;
+    //ArrayList searchResults;
 
     Button createEquipmentButton; // Button to go to the new equipment activity
     Button viewEmployeeButton; //Button to update the list view for view employee
@@ -44,7 +45,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         searchView = findViewById(R.id.searchView);
-        //listView = findViewById(R.id.listView);
+        listView = findViewById(R.id.mainDisplay);
+
+        adapter = new ArrayAdapter<String>(this, android.R.layout.list_view, currentDisplayList);
+        listView.setAdapter(adapter);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if(currentDisplayList.contains(query)){
+                    adapter.getFilter().filter(query);
+                }else{
+                    Toast.makeText(MainActivity.this, "No Match found",Toast.LENGTH_LONG).show();
+                }
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
 
         // Instantiate the 3 main lists
         employeeList = new ArrayList<>();

@@ -30,6 +30,8 @@
         <ListView
             android:id="@+id/mainDisplay"
             style="@style/App_ListViewStyle"
+            android:divider="#ad5"
+            android:dividerHeight="2dp"
             android:layout_columnSpan="2" />
 
         <Button
