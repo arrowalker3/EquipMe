@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<Equipment> equipmentList;
     ArrayList<Displayable> currentDisplayList;
 
+    ArrayAdapter<String> arrayAdapter;
+
     SearchView searchView;
     ListView listView;
     ArrayAdapter adapter;
@@ -337,8 +339,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Set ListView
-        ArrayAdapter<String> arrayAdapter =
-                new ArrayAdapter<>(this, R.layout.list_view, R.id.textView, displayStrings);
+        arrayAdapter = new ArrayAdapter<>(this, R.layout.list_view, R.id.textView, displayStrings);
         ListView mainDisplay = (ListView) findViewById(R.id.mainDisplay);
         mainDisplay.setAdapter(arrayAdapter);
     }
