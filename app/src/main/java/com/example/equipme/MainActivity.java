@@ -27,17 +27,13 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<Employee> employeeList;
-<<<<<<< HEAD
-    ArrayList<Equipment> equipmentList = new ArrayList<>();
+
+            ArrayList<Equipment> equipmentList;
+    ArrayList<Displayable> currentDisplayList;
 
     SearchView searchView;
     ListView listView;
     ArrayAdapter adapter;
-
-=======
-    ArrayList<Equipment> equipmentList;
-    ArrayList<Displayable> currentDisplayList;
->>>>>>> 224cbb11aa5dc8c96395457e0140c7ba1a3b075d
 
     Button createEquipmentButton; // Button to go to the new equipment activity
     Button viewEmployeeButton; //Button to update the list view for view employee

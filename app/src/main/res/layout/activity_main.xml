@@ -23,6 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/App_EditTextStyle"
+            android:queryHint="Search Here"
+            android:iconifiedByDefault="false"
             android:layout_columnSpan="2"/>
 
         <ListView
@@ -38,19 +40,7 @@
             android:layout_marginBottom="24dp"
             android:text="@string/view_equipment_button" />
 
-<<<<<<< HEAD
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="363dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:queryHint="Search Here"
-        android:iconifiedByDefault="false"
-        android:layout_alignParentTop="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-=======
+
         <Button
             android:id="@+id/viewEmployeeButton"
             android:layout_width="160dp"
@@ -58,7 +48,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginBottom="24dp"
             android:text="@string/view_employee_button" />
->>>>>>> 224cbb11aa5dc8c96395457e0140c7ba1a3b075d
+
 
         <Button
             android:id="@+id/createEquipmentButton"
