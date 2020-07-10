@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     SearchView searchView;
     ListView listView;
-    ArrayAdapter adapter;
+    //ArrayAdapter adapter;
     //ArrayList searchResults;
 
     Button createEquipmentButton; // Button to go to the new equipment activity
@@ -49,13 +49,11 @@ public class MainActivity extends AppCompatActivity {
         searchView = findViewById(R.id.searchView);
         listView = findViewById(R.id.mainDisplay);
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.list_view, currentDisplayList);
-        listView.setAdapter(adapter);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 if(currentDisplayList.contains(query)){
-                    adapter.getFilter().filter(query);
+                    arrayAdapter.getFilter().filter(query);
                 }else{
                     Toast.makeText(MainActivity.this, "No Match found",Toast.LENGTH_LONG).show();
                 }
@@ -63,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public boolean onQueryTextChange(String newText) {
-                adapter.getFilter().filter(newText);
+                arrayAdapter.getFilter().filter(newText);
                 return false;
             }
         });
