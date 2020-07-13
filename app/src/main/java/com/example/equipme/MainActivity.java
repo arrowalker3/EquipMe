@@ -347,12 +347,39 @@ public class MainActivity extends AppCompatActivity {
         final ListView mainDisplay = (ListView) findViewById(R.id.mainDisplay);
         mainDisplay.setAdapter(arrayAdapter);
 
+        // Item On Click Listener
         mainDisplay.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String s = mainDisplay.getItemAtPosition(i).toString() + "at position " + i;
+                // Check if item is employee or equipment
+                if (currentDisplayList.get(i).isEmployee()) {
+                    // if employee, send this employee and list of equipment
+                    // Convert items to JSON string
+                    Gson gson = new Gson();
+                    Employee employee = (Employee) currentDisplayList.get(i);
+                    String employeeJSON = gson.toJson(employee);
+                    String equipmentJSON = gson.toJson(equipmentList);
 
-                Toast.makeText(MainActivity.this, s, Toast.LENGTH_LONG).show();
+                    // Create intent
+                    Intent intent = new Intent(MainActivity.this, ViewEmployeeActivity.class);
+                    intent.putExtra("employeeData", employeeJSON);
+                    intent.putExtra("equipmentArrayList", equipmentJSON);
+
+                    // Start Activity
+                    startActivity(intent);
+                } else {
+                    // if equipment, send this equipment
+                    // Convert item to JSON String
+                    Gson gson = new Gson();
+                    String equipmentJSON = gson.toJson((Equipment) currentDisplayList.get(i));
+
+                    // Create intent
+                    Intent intent = new Intent(MainActivity.this, ViewEquipmentActivity.class);
+                    intent.putExtra("equipmentData", equipmentJSON);
+
+                    // Start Activity
+                    startActivity(intent);
+                }
             }
         });
     }
