@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -343,7 +344,16 @@ public class MainActivity extends AppCompatActivity {
 
         // Set ListView
         arrayAdapter = new ArrayAdapter<>(this, R.layout.list_view, R.id.textView, displayStrings);
-        ListView mainDisplay = (ListView) findViewById(R.id.mainDisplay);
+        final ListView mainDisplay = (ListView) findViewById(R.id.mainDisplay);
         mainDisplay.setAdapter(arrayAdapter);
+
+        mainDisplay.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String s = mainDisplay.getItemAtPosition(i).toString() + "at position " + i;
+
+                Toast.makeText(MainActivity.this, s, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
