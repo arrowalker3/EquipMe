@@ -46,6 +46,15 @@
         app:layout_constraintTop_toBottomOf="@+id/viewEquipmentTypeTextView" />
 
     <TextView
+        android:id="@+id/equipmentBrandTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:text="@string/placeholder"
+        app:layout_constraintBaseline_toBaselineOf="@+id/viewEquipmentBrandTextView"
+        app:layout_constraintStart_toEndOf="@+id/viewEquipmentBrandTextView" />
+
+    <TextView
         android:id="@+id/viewEquipmentAssignedToTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

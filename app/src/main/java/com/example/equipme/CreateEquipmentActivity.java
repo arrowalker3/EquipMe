@@ -26,7 +26,7 @@ public class CreateEquipmentActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (allInformationFilled()) {
 
-                    // Populate "Type of equipment" dropdown
+                    // Populate dropdown
                     /************************************************************************************************************
                      Spinner equipTypeSpinner = (Spinner) findViewById(R.id.equipmentTypeSpinner);
                      ArrayAdapter<String> equipTypeAdapter = new ArrayAdapter<String>(CreateEquipmentActivity.this,
