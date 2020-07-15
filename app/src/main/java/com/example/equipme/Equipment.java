@@ -3,6 +3,7 @@ package com.example.equipme;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Equipment extends Displayable implements Parcelable {
@@ -13,6 +14,17 @@ public class Equipment extends Displayable implements Parcelable {
     private Date dateGiven;
     public String notes;
 
+    /**************************************************************************
+     * DEFAULT CONSTRUCTOR
+     **************************************************************************/
+    public Equipment() {
+        this.assignedTo = "None";
+        this.dateGiven = new Date();
+    }
+
+    /**************************************************************************
+     * NON-DEFAULT CONSTRUCTOR
+     **************************************************************************/
     public Equipment(String brand, String type, String serialNumber, String assignedTo, Date dateGiven, String notes) {
         this.brand = brand;
         this.type = type;
@@ -42,10 +54,6 @@ public class Equipment extends Displayable implements Parcelable {
             return new Equipment[size];
         }
     };
-
-    public Equipment() {
-
-    }
 
     // Getters
     public String getType() {

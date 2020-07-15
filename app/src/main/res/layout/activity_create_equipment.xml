@@ -56,18 +56,6 @@
                 style="@style/App_EditTextStyle" />
 
             <TextView
-                android:id="@+id/equipmentAssignedToTextView"
-                style="@style/App_TextViewStyle"
-                android:text="@string/equipment_assigned_to_text_view" />
-
-            <Spinner
-                android:id="@+id/equipmentAssignedToSpinner"
-                style="@style/App_SpinnerStyle"
-                android:entries="@array/assigned_to_options"
-                android:prompt="@string/assigned_to_prompt"
-                android:text="@string/blank" />
-
-            <TextView
                 android:id="@+id/equipmentNotesTextView"
                 style="@style/App_TextViewStyle"
                 android:text="@string/equipment_notes_text_view" />

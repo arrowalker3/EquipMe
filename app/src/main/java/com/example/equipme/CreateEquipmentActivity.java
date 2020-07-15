@@ -58,9 +58,6 @@ public class CreateEquipmentActivity extends AppCompatActivity {
                     // User input for "Serial Number"
                     EditText serialNumber = (EditText) findViewById(R.id.equipmentSerialEditText);
 
-                    // Populate "Assigned to" dropdown
-                    Spinner assignedTo = (Spinner) findViewById(R.id.equipmentAssignedToSpinner);
-
                     // User input for "Other notes"
                     EditText notes = (EditText) findViewById(R.id.equipmentNotesEditText);
 
@@ -72,7 +69,6 @@ public class CreateEquipmentActivity extends AppCompatActivity {
                     newEquipment.setType(type.getSelectedItem().toString());
                     newEquipment.setBrand(brand.getSelectedItem().toString());
                     newEquipment.setSerialNumber(serialNumber.getText().toString());
-                    newEquipment.setAssignedTo(assignedTo.getSelectedItem().toString());
                     newEquipment.setNotes(notes.getText().toString());
 
                     //First parameter of the Intent is where you are going from and the 2nd is your destination
@@ -113,12 +109,6 @@ public class CreateEquipmentActivity extends AppCompatActivity {
         // Check Serial Number EditText
         EditText serialNumber = (EditText) findViewById(R.id.equipmentSerialEditText);
         if (serialNumber.getText().toString().equals("")) {
-            return false;
-        }
-
-        // Check Assigned To Spinner
-        Spinner equipmentAssignedTo = findViewById(R.id.equipmentAssignedToSpinner);
-        if (equipmentAssignedTo.getSelectedItemPosition() == 0) {
             return false;
         }
 
