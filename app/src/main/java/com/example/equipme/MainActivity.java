@@ -304,8 +304,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         fillListView();
-
-        // Set onClickListeners
     }
 
     /**************************************************************************
@@ -326,8 +324,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         fillListView();
-
-        // Set onClickListeners
     }
 
     /**************************************************************************
