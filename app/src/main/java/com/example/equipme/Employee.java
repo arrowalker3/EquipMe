@@ -12,7 +12,41 @@ public class Employee extends Displayable {
     ArrayList<Equipment> equipment;
     String notes;
 
-    Employee(){ setEmployee(true); }
+    /**************************************************************************
+     * DEFAULT CONSTRUCTOR
+     **************************************************************************/
+    Employee(){
+        equipment = new ArrayList<>();
+        setEmployee(true);
+    }
+
+    /**************************************************************************
+     * NON-DEFAULT CONSTRUCTOR (no equipment)
+     **************************************************************************/
+    Employee(String name, String jobTitle, String emailAddress, String employeeNumber, String notes) {
+        this.name = name;
+        this.jobTitle = jobTitle;
+        this.emailAddress = emailAddress;
+        this.employeeNumber = employeeNumber;
+        this.notes = notes;
+        equipment = new ArrayList<>();
+        setMyKey();
+        setEmployee(true);
+    }
+
+    /**************************************************************************
+     * NON-DEFAULT CONSTRUCTOR (with equipment)
+     **************************************************************************/
+    Employee(String name, String jobTitle, String emailAddress, String employeeNumber, String notes, ArrayList<Equipment> equipList) {
+        this.name = name;
+        this.jobTitle = jobTitle;
+        this.emailAddress = emailAddress;
+        this.employeeNumber = employeeNumber;
+        this.notes = notes;
+        equipment = equipList;
+        setMyKey();
+        setEmployee(true);
+    }
 
     void setJobTitle(String jTitle){this.jobTitle = jTitle;}
     String getJobTitle(){return jobTitle;}
@@ -30,6 +64,44 @@ public class Employee extends Displayable {
     String getEmployeeNumber(){return employeeNumber;}
 
     void setEquipment(ArrayList equip){this.equipment = equip;}
+
+    /**************************************************************************
+     * ADD EQUIPMENT
+     *
+     * Adds the given list of equipment to current list. Sets each equipment's
+     * "assignedTo" to this employee's name.
+     *
+     * @param: equipList - List of equipment to add (can be any size)
+     **************************************************************************/
+    public void addEquipment(ArrayList<Equipment> equipList) {
+        for (int i = 0; i < equipList.size(); i++) {
+            equipList.get(i).setAssignedTo(this.name);
+            this.equipment.add(equipList.get(i));
+        }
+    }
+
+    /**************************************************************************
+     * REMOVE EQUIPMENT
+     *
+     * Removes the given list of equipment from current list. Sets each equipment's
+     * "assignedTo" to "None".
+     *
+     * @param: equipList - List of equipment to add (can be any size)
+     **************************************************************************/
+    public void removeEquipment(ArrayList<Equipment> toRemove) {
+        for (int i = 0; i < toRemove.size(); i++) {
+            String key = toRemove.get(i).getMyKey();
+            boolean found = false;
+
+            for (int j = 0; j < equipment.size() && !found; j++) {
+                if (key.equals(equipment.get(j).getMyKey())) {
+                    found = true;
+                    equipment.remove(j);
+                    toRemove.get(i).setAssignedTo("None");
+                }
+            }
+        }
+    }
     ArrayList<Equipment> getEquipment(){return equipment;}
 
     void setNotes(String note){this.notes = note;}

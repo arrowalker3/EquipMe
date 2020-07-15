@@ -32,6 +32,7 @@ public class Equipment extends Displayable implements Parcelable {
         this.assignedTo = assignedTo;
         this.dateGiven = dateGiven;
         this.notes = notes;
+        setMyKey();
     }
 
 

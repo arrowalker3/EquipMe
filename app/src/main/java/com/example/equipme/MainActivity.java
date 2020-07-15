@@ -25,6 +25,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<Employee> employeeList;
@@ -93,19 +94,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Load fake lists
+        equipmentList = makeFakeEquipment();
+        employeeList = makeFakeEmployees();
+
+        // Fill view with employees first
+        updateListViewEmployees(employeeList);
+
         viewEmployeeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateListViewEmployees(makeFakeEmployees());
+                updateListViewEmployees(employeeList);
             }
         });
-
-        updateListViewEmployees(makeFakeEmployees());
 
         viewEquipmentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateListViewEquipment(makeFakeEquipment());
+                updateListViewEquipment(equipmentList);
             }
         });
 
@@ -257,14 +263,27 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<Employee> makeFakeEmployees() {
         ArrayList<Employee> listOfEmployees = new ArrayList<>();
 
-        Employee employeeToAdd = new Employee();
-        employeeToAdd.setName("John Doe");
-        Employee otherEmployee = new Employee();
-        otherEmployee.setName("Johnny Appleseed");
-        for (int i = 0; i < 15; i++) {
-            listOfEmployees.add(employeeToAdd);
-            listOfEmployees.add(otherEmployee);
-        }
+        Employee employeeToAdd = new Employee("John Doe", "Laborer", "doe@gmail.com", "1234", "Solid");
+        listOfEmployees.add(employeeToAdd);
+
+        employeeToAdd = new Employee("Johnny Appleseed", "Superintendent", "oranges@gmail.com", "7658", "Owes me $20");
+        ArrayList<Equipment> equip = new ArrayList<>();
+        equip.add(equipmentList.get(3));
+        employeeToAdd.addEquipment(equip);
+        listOfEmployees.add(employeeToAdd);
+
+        employeeToAdd = new Employee("John Henry", "Laborer", "mighty.man@gmail.com", "1432", "Born with a hammer right in his hand");
+        equip.clear();
+        equip.add(equipmentList.get(2));
+        equip.add(equipmentList.get(4));
+        employeeToAdd.addEquipment(equip);
+        listOfEmployees.add(employeeToAdd);
+
+        employeeToAdd = new Employee("Luke Skywalker", "Compliance Officer", "4ce@gmail.com", "9876", "");
+        listOfEmployees.add(employeeToAdd);
+
+        employeeToAdd = new Employee("Carol Bells", "Human Resources", "ding@gmail.com", "6547", "");
+        listOfEmployees.add(employeeToAdd);
 
         return listOfEmployees;
     }
@@ -275,12 +294,16 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<Equipment> makeFakeEquipment() {
         ArrayList<Equipment> listOfEquipment = new ArrayList<>();
 
-        Equipment equipmentToAdd = new Equipment();
-        equipmentToAdd.setBrand("Brand");
-        equipmentToAdd.setType("Hammer");
-        for (int i = 0; i < 25; i++) {
-            listOfEquipment.add(equipmentToAdd);
-        }
+        Equipment equipmentToAdd = new Equipment("Apple", "Phone", "12345", "None", new Date(), "");
+        listOfEquipment.add(equipmentToAdd);
+        equipmentToAdd = new Equipment("Android", "Phone", "43", "None", new Date(), "");
+        listOfEquipment.add(equipmentToAdd);
+        equipmentToAdd = new Equipment("HP", "Laptop", "sdf23466", "None", new Date(), "A bit dinged up");
+        listOfEquipment.add(equipmentToAdd);
+        equipmentToAdd = new Equipment("Dell", "Printer", "456765", "None", new Date(), "No issues");
+        listOfEquipment.add(equipmentToAdd);
+        equipmentToAdd = new Equipment("Apple", "Phone", "456765", "None", new Date(), "Due to replace");
+        listOfEquipment.add(equipmentToAdd);
 
         return listOfEquipment;
     }
