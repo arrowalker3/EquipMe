@@ -16,7 +16,7 @@ public class ViewEquipmentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_equipment);
 
-        String equipmentString = getIntent().getStringExtra("singleEquipment");
+        String equipmentString = getIntent().getStringExtra("equipmentData");
         if(equipmentString != null) {
             Gson gson = new Gson();
             Equipment singleEquipment = gson.fromJson(equipmentString, Equipment.class);
