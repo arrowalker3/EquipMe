@@ -5,8 +5,8 @@
     <string name="view_equipment_button">View Equipment</string>
     <string name="view_employee_button">View Employee</string>
 
-    <string name="equipment_type_text_view">Type of Equipment:</string>
-    <string name="equipment_brand_text_view">Brand of Equipment:</string>
+    <string name="equipment_type_text_view">Equipment Type:</string>
+    <string name="equipment_brand_text_view">Equipment Brand:</string>
     <string name="equipment_serial_text_view">Serial Number:</string>
     <string name="equipment_assigned_to_text_view">Assigned to:</string>
     <string name="equipment_notes_text_view">Other Notes:</string>
