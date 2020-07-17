@@ -473,5 +473,11 @@ public class MainActivity extends AppCompatActivity {
         return toTake;
     }
 
+<<<<<<< HEAD
     public void
+=======
+    public void updateNotes(Displayable toUpdate, String notes) {
+
+    }
+>>>>>>> 58b0691e06de003e5d2b515ea2058e3df5064466
 }
