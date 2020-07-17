@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -29,9 +30,14 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<Employee> employeeList;
-
-            ArrayList<Equipment> equipmentList;
+    ArrayList<Equipment> equipmentList;
     ArrayList<Displayable> currentDisplayList;
+
+    public static WeakReference<MainActivity> weakActivity;
+
+    public static MainActivity getmInstanceActivity() {
+        return weakActivity.get();
+    }
 
     ArrayAdapter<String> arrayAdapter;
 
@@ -48,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        weakActivity = new WeakReference<MainActivity>(MainActivity.this);
         searchView = findViewById(R.id.searchView);
         listView = findViewById(R.id.mainDisplay);
 
