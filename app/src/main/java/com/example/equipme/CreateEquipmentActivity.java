@@ -76,12 +76,14 @@ public class CreateEquipmentActivity extends AppCompatActivity {
 
                     createEquipmentIntent.putExtra("equipment", newEquipment);
 
-                    startActivity(createEquipmentIntent);
+                    setResult(RESULT_OK, createEquipmentIntent);
+
+                    finish();
                 } else {
                     // Information is missing
                     String errorMessage = "Some information is still empty";
-                    //Toast toast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
-                    //toast.show();
+                    Toast toast = Toast.makeText(CreateEquipmentActivity.this, errorMessage, Toast.LENGTH_SHORT);
+                    toast.show();
                 }
             }
         });

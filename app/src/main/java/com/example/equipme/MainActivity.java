@@ -103,12 +103,12 @@ public class MainActivity extends AppCompatActivity {
         viewEmployeeButton = findViewById((R.id.viewEmployeeButton));
         viewEquipmentButton = findViewById((R.id.viewEquipmentButton));
 
-        Intent equipmentIntent = getIntent();
-        if(equipmentIntent != null) {
-            Equipment selectedEquipment = (Equipment) equipmentIntent.getParcelableExtra("equipment");
+        //Intent equipmentIntent = getIntent();
+        //if(equipmentIntent != null) {
+        //    Equipment selectedEquipment = (Equipment) equipmentIntent.getParcelableExtra("equipment");
 
-            equipmentList.add(selectedEquipment);
-        }
+        //    equipmentList.add(selectedEquipment);
+        //}
 
         /**************************************************************************
          * Set on click listener for create equipment button
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                 //First parameter of the Intent is where you are going from and the 2nd is your destination
                 Intent intent = new Intent( MainActivity.this, CreateEquipmentActivity.class);
 
-                startActivity(intent);
+                startActivityForResult(intent, 2);
             }
         });
 
@@ -283,6 +283,20 @@ public class MainActivity extends AppCompatActivity {
 
             // Display Employees
             updateListViewEmployees(employeeList);
+        } else if (requestCode == 2 && resultCode == RESULT_OK) {
+            Equipment selectedEquipment = (Equipment) data.getParcelableExtra("equipment");
+
+            equipmentList.add(selectedEquipment);
+
+            // Save
+            try {
+                saveEmployee(equipmentList);
+            } catch (Exception e) {
+                Toast.makeText(this, "Unable to save Equipment List", Toast.LENGTH_SHORT).show();
+            }
+
+            // Display Equipment
+            updateListViewEquipment(equipmentList);
         }
     }
 
