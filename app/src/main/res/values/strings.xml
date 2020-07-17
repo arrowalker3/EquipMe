@@ -30,6 +30,7 @@
     <string name="minus">-</string>
     <string name="placeholder">Info here</string>
     <string name="cancel">Back</string>
+    <string name="saveNotes">Save Notes</string>
 
     <string name="employee_job_title_prompt">Choose a job title</string>
 
