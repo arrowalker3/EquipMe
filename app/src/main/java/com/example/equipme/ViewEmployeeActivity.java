@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 
 public class ViewEmployeeActivity extends AppCompatActivity {
 
+    ArrayList<String> displayEquipment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,17 +40,21 @@ public class ViewEmployeeActivity extends AppCompatActivity {
             jobTitle.setText(employee.getJobTitle());
 
             if (equipmentArrayList != null) {
-                ArrayList<String> displayEquipment = new ArrayList<>();
+                displayEquipment = new ArrayList<>();
                 for (int i = 0; i < equipmentArrayList.size(); i++) {
                     displayEquipment.add(equipmentArrayList.get(i));
                 }
+
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.list_view, R.id.textView, displayEquipment);
                 final ListView EquipmentDisplay = (ListView) findViewById(R.id.viewEmployeeAssignedEquipmentListView);
                 EquipmentDisplay.setAdapter(arrayAdapter);
-
-                TextView notes = (TextView) findViewById(R.id.viewEmployeeNotesEditText);
-                notes.setText(employee.getNotes());
+                Spinner addRemoveEquipment = (Spinner)findViewById(R.id.employeeAddRemoveEquipmentSpinner);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, displayEquipment);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                addRemoveEquipment.setAdapter(adapter);
             }
+            TextView notes = (TextView) findViewById(R.id.viewEmployeeNotesEditText);
+            notes.setText(employee.getNotes());
         }
     }
 }
