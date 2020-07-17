@@ -99,7 +99,8 @@ public class ViewEmployeeActivity extends AppCompatActivity {
 
         Spinner addRemoveEquipment = (Spinner)findViewById(R.id.employeeAddRemoveEquipmentSpinner);
         int position = addRemoveEquipment.getSelectedItemPosition();
-        MainActivity.getmInstanceActivity().addEquipmentToEmployee(equipmentArrayList.get(position), hold);;
+        Employee returnedEmployee = MainActivity.getmInstanceActivity().addEquipmentToEmployee(equipmentArrayList.get(position), hold);
+        updateListView(returnedEmployee);
     }
 
     public void removeEquipment(View view){
@@ -107,10 +108,20 @@ public class ViewEmployeeActivity extends AppCompatActivity {
 
         Spinner addRemoveEquipment = (Spinner)findViewById(R.id.employeeAddRemoveEquipmentSpinner);
         int position = addRemoveEquipment.getSelectedItemPosition();
-        MainActivity.getmInstanceActivity().removeEquipmentFromEmployee(equipmentArrayList.get(position), hold);
+        Employee returnedEmployee = MainActivity.getmInstanceActivity().removeEquipmentFromEmployee(equipmentArrayList.get(position), hold);
+        updateListView(returnedEmployee);
     }
 
-    public void updateListView(View view){
+    public void updateListView(Employee employee){
+        displayEquipment = new ArrayList<>();
+        allEquipment = new ArrayList<>();
+        for (int i = 0; i < employee.getEquipment().size(); i++) {
+            String hold = employee.getEquipment().get(i).getBrand() + " " + employee.getEquipment().get(i).getType();
+            displayEquipment.add(hold);
+        }
+        for (int all = 0; all < equipmentArrayList.size(); all++) {
+            allEquipment.add(equipmentArrayList.get(all).getDisplayString());
+        }
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.list_view, R.id.textView, displayEquipment);
         final ListView EquipmentDisplay = (ListView) findViewById(R.id.viewEmployeeAssignedEquipmentListView);
         EquipmentDisplay.setAdapter(arrayAdapter);

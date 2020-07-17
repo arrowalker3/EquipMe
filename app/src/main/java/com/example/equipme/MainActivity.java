@@ -444,6 +444,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public Employee removeEquipmentFromEmployee(Equipment toRemove, Employee toTake){
-
+        return toTake;
     }
 }
