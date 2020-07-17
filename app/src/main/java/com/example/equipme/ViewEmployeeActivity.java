@@ -2,7 +2,10 @@ package com.example.equipme;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -16,6 +19,7 @@ import java.util.ArrayList;
 public class ViewEmployeeActivity extends AppCompatActivity {
 
     ArrayList<String> displayEquipment;
+    ArrayList<String> allEquipment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,20 +49,41 @@ public class ViewEmployeeActivity extends AppCompatActivity {
                 TypeToken<ArrayList<Equipment>> token = new TypeToken<ArrayList<Equipment>>() {};
                 ArrayList<Equipment> equipmentArrayList = gson.fromJson(arrayJSON, token.getType());
                 displayEquipment = new ArrayList<>();
-                for (int i = 0; i < equipmentArrayList.size(); i++) {
-                    displayEquipment.add(equipmentArrayList.get(i).getDisplayString());
+                allEquipment = new ArrayList<>();
+                for (int i = 0; i < employee.getEquipment().size(); i++) {
+                    String hold = employee.getEquipment().get(i).getBrand() + " " + employee.getEquipment().get(i).getType();
+                    displayEquipment.add(hold);
+                }
+                for (int all = 0; all < equipmentArrayList.size(); all++) {
+                    allEquipment.add(equipmentArrayList.get(all).getDisplayString());
                 }
 
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.list_view, R.id.textView, displayEquipment);
                 final ListView EquipmentDisplay = (ListView) findViewById(R.id.viewEmployeeAssignedEquipmentListView);
                 EquipmentDisplay.setAdapter(arrayAdapter);
                 Spinner addRemoveEquipment = (Spinner)findViewById(R.id.employeeAddRemoveEquipmentSpinner);
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, displayEquipment);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, allEquipment);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 addRemoveEquipment.setAdapter(adapter);
             }
             TextView notes = (TextView) findViewById(R.id.viewEmployeeNotesEditText);
             notes.setText(employee.getNotes());
+
+            ListView EquipmentDisplay = (ListView) findViewById(R.id.viewEmployeeAssignedEquipmentListView);
+            EquipmentDisplay.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        Gson gson = new Gson();
+                        String equipmentJSON = gson.toJson((String) allEquipment.get(i));
+
+                        // Create intent
+                        Intent intent = new Intent(ViewEmployeeActivity.this, ViewEquipmentActivity.class);
+                        intent.putExtra("equipmentData", equipmentJSON);
+
+                        // Start Activity
+                        startActivity(intent);
+                    }
+            });
         }
     }
 }

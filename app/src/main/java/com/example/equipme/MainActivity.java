@@ -316,7 +316,7 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<Equipment> makeFakeEquipment() {
         ArrayList<Equipment> listOfEquipment = new ArrayList<>();
 
-        Equipment equipmentToAdd = new Equipment("Apple", "Phone", "12345", "No one assigned", new Date(), "");
+        Equipment equipmentToAdd = new Equipment("Apple", "Phone", "12345", "John Doe", new Date(), "");
         listOfEquipment.add(equipmentToAdd);
         equipmentToAdd = new Equipment("Android", "Phone", "43", "No one assigned", new Date(), "");
         listOfEquipment.add(equipmentToAdd);
