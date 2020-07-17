@@ -52,7 +52,7 @@ public class ViewEquipmentActivity extends AppCompatActivity {
     }
 
     public void saveNotes(View view){
-        hold = (Equipment) MainActivity.getmInstanceActivity().updateNotes(hold, ((EditText)findViewById(R.id.viewEmployeeNotesEditText)).getText().toString());
+        hold = (Equipment) MainActivity.getmInstanceActivity().updateNotes(hold, ((EditText)findViewById(R.id.equipmentNotesEditText)).getText().toString());
         Toast.makeText(ViewEquipmentActivity.this, "Notes Saved",Toast.LENGTH_LONG).show();
     }
 }
