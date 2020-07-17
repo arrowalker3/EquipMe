@@ -50,6 +50,7 @@ public class ViewEmployeeActivity extends AppCompatActivity {
 
             //Sets the ListView to display the employee's assigned equipment
             if (arrayJSON != null) {
+                // Parse ArrayList from JSON
                 TypeToken<ArrayList<Equipment>> token = new TypeToken<ArrayList<Equipment>>() {};
                 ArrayList<Equipment> equipmentArrayList = gson.fromJson(arrayJSON, token.getType());
                 displayEquipment = new ArrayList<>();

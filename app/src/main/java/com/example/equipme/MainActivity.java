@@ -409,19 +409,23 @@ public class MainActivity extends AppCompatActivity {
                     // Start Activity
                     startActivity(intent);
                 } else {
-                    // if equipment, send this equipment
-                    // Convert item to JSON String
-                    Gson gson = new Gson();
-                    String equipmentJSON = gson.toJson((Equipment) currentDisplayList.get(i));
-
-                    // Create intent
-                    Intent intent = new Intent(MainActivity.this, ViewEquipmentActivity.class);
-                    intent.putExtra("equipmentData", equipmentJSON);
-
-                    // Start Activity
-                    startActivity(intent);
+                    viewEquipmentStart((Equipment) currentDisplayList.get(i));
                 }
             }
         });
+    }
+
+    public void viewEquipmentStart(Equipment toView) {
+        // if equipment, send this equipment
+        // Convert item to JSON String
+        Gson gson = new Gson();
+        String equipmentJSON = gson.toJson(toView);
+
+        // Create intent
+        Intent intent = new Intent(MainActivity.this, ViewEquipmentActivity.class);
+        intent.putExtra("equipmentData", equipmentJSON);
+
+        // Start Activity
+        startActivity(intent);
     }
 }
