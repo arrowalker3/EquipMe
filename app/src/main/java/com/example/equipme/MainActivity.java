@@ -487,13 +487,20 @@ public class MainActivity extends AppCompatActivity {
         return toTake;
     }
 
-    public void updateNotes(Displayable toUpdate, String notes) {
+    public Displayable updateNotes(Displayable toUpdate, String notes) {
         if (toUpdate.isEmployee() == true) {
-            Employee employee = (Employee) toUpdate;
-            employee.setNotes(notes);
+            boolean found = false;
+            for (int i = 0; i < employeeList.size() && !found; i++) {
+                if (employeeList.get(i).getMyKey().equals(((Employee) toUpdate).getMyKey())) {
+                    employeeList.get(i).setNotes(notes);
+                    return employeeList.get(i);
+                }
+            }
         } else {
             Equipment equipment = (Equipment) toUpdate;
             equipment.setNotes(notes);
         }
+
+        return null;
     }
 }
