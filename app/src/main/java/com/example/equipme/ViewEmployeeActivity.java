@@ -84,7 +84,7 @@ public class ViewEmployeeActivity extends AppCompatActivity {
                 EquipmentDisplay.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        MainActivity.getmInstanceActivity().viewEquipmentStart(employee.getEquipment().get(i));
+                        MainActivity.getmInstanceActivity().viewEquipmentStart(hold.getEquipment().get(i));
                     }
                 });
             }
@@ -95,8 +95,6 @@ public class ViewEmployeeActivity extends AppCompatActivity {
         }
     }
     public void addEquipment(View view){
-        Toast.makeText(ViewEmployeeActivity.this, "Equipment Added! Yay",Toast.LENGTH_LONG).show();
-
         Spinner addRemoveEquipment = (Spinner)findViewById(R.id.employeeAddRemoveEquipmentSpinner);
         int position = addRemoveEquipment.getSelectedItemPosition();
         Employee returnedEmployee = MainActivity.getmInstanceActivity().addEquipmentToEmployee(equipmentArrayList.get(position), hold);
@@ -104,8 +102,6 @@ public class ViewEmployeeActivity extends AppCompatActivity {
     }
 
     public void removeEquipment(View view){
-        Toast.makeText(ViewEmployeeActivity.this, "Equipment removed, booo",Toast.LENGTH_LONG).show();
-
         Spinner addRemoveEquipment = (Spinner)findViewById(R.id.employeeAddRemoveEquipmentSpinner);
         int position = addRemoveEquipment.getSelectedItemPosition();
         Employee returnedEmployee = MainActivity.getmInstanceActivity().removeEquipmentFromEmployee(equipmentArrayList.get(position), hold);
@@ -125,6 +121,7 @@ public class ViewEmployeeActivity extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.list_view, R.id.textView, displayEquipment);
         final ListView EquipmentDisplay = (ListView) findViewById(R.id.viewEmployeeAssignedEquipmentListView);
         EquipmentDisplay.setAdapter(arrayAdapter);
+        hold = employee;
     }
 }
 
