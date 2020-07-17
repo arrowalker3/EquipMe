@@ -42,6 +42,7 @@ public class ViewEmployeeActivity extends AppCompatActivity {
             jobTitle.setText(employee.getJobTitle());
 
             if (arrayJSON != null) {
+                // Parse ArrayList from JSON
                 TypeToken<ArrayList<Equipment>> token = new TypeToken<ArrayList<Equipment>>() {};
                 ArrayList<Equipment> equipmentArrayList = gson.fromJson(arrayJSON, token.getType());
                 displayEquipment = new ArrayList<>();
