@@ -284,10 +284,9 @@ public class MainActivity extends AppCompatActivity {
             // Display Employees
             updateListViewEmployees(employeeList);
         } else if (requestCode == 2 && resultCode == RESULT_OK) {
-            String json = data.getStringExtra("equipmentJson");
-            Gson gson = new Gson();
-            Equipment createdEquipment = gson.fromJson(json, Equipment.class);
-            equipmentList.add(createdEquipment);
+            Equipment selectedEquipment = (Equipment) data.getParcelableExtra("equipment");
+
+            equipmentList.add(selectedEquipment);
 
             // Save
             try {
@@ -489,6 +488,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void updateNotes(Displayable toUpdate, String notes) {
-
+        if (toUpdate.isEmployee() == true) {
+            Employee employee = (Employee) toUpdate;
+            employee.setNotes(notes);
+        } else {
+            Equipment equipment = (Equipment) toUpdate;
+            equipment.setNotes(notes);
+        }
     }
 }
