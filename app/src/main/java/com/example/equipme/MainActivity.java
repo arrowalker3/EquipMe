@@ -467,4 +467,8 @@ public class MainActivity extends AppCompatActivity {
 
         return toTake;
     }
+
+    public void updateNotes(Displayable toUpdate, String notes) {
+
+    }
 }
