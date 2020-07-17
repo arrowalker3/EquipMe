@@ -489,13 +489,25 @@ public class MainActivity extends AppCompatActivity {
 
     public Displayable updateNotes(Displayable toUpdate, String notes) {
         if (toUpdate.isEmployee() == true) {
+<<<<<<< HEAD
             Employee employee = (Employee) toUpdate;
             employee.setNotes(notes);
             return employee;
+=======
+            boolean found = false;
+            for (int i = 0; i < employeeList.size() && !found; i++) {
+                if (employeeList.get(i).getMyKey().equals(((Employee) toUpdate).getMyKey())) {
+                    employeeList.get(i).setNotes(notes);
+                    return employeeList.get(i);
+                }
+            }
+>>>>>>> b5408b9d49b29e6c99faf9f463f983e2cfc735c1
         } else {
             Equipment equipment = (Equipment) toUpdate;
             equipment.setNotes(notes);
             return equipment;
         }
+
+        return null;
     }
 }
