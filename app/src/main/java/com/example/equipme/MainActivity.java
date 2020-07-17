@@ -491,16 +491,21 @@ public class MainActivity extends AppCompatActivity {
         if (toUpdate.isEmployee() == true) {
             boolean found = false;
             for (int i = 0; i < employeeList.size() && !found; i++) {
-                if (employeeList.get(i).getMyKey().equals(((Employee) toUpdate).getMyKey())) {
+                if (employeeList.get(i).getMyKey().equals(toUpdate.getMyKey())) {
                     employeeList.get(i).setNotes(notes);
                     return employeeList.get(i);
                 }
             }
         } else {
-            Equipment equipment = (Equipment) toUpdate;
-            equipment.setNotes(notes);
+            boolean found = false;
+            for (int i = 0; i < equipmentList.size() && !found; i++) {
+                if (equipmentList.get(i).getMyKey().equals(toUpdate.getMyKey())) {
+                    equipmentList.get(i).setNotes(notes);
+                    return equipmentList.get(i);
+                }
+            }
         }
 
-        return null;
+        return new Equipment();
     }
 }
