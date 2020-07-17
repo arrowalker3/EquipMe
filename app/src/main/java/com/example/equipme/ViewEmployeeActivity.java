@@ -27,24 +27,28 @@ public class ViewEmployeeActivity extends AppCompatActivity {
 
         String employeeData = getIntent().getStringExtra("employeeData");
         String arrayJSON = getIntent().getStringExtra("equipmentArrayList");
-        //ArrayList<String> equipmentArrayList = getIntent().getStringArrayListExtra("equipmentArrayList");
+
         if (employeeData != null) {
             Gson gson = new Gson();
             Employee employee = gson.fromJson(employeeData, Employee.class);
-            //ArrayList equipment = gson.fromJson(String.valueOf(equipmentArrayList), ArrayList.class);
 
+            //Sets the employee name
             TextView name = (TextView) findViewById(R.id.viewEmployeeNameTextView);
             name.setText(employee.getName());
 
+            //Sets the employee email
             TextView email = (TextView) findViewById(R.id.viewEmployeeEmailTextView);
             email.setText(employee.getEmailAddress());
 
+            //Sets the employee ID Number
             TextView idNumber = (TextView) findViewById(R.id.viewEmployeeNumberTextView);
             idNumber.setText(employee.getEmployeeNumber());
 
+            //Sets the employee Job Title
             TextView jobTitle = (TextView) findViewById(R.id.viewEmployeeJobTitleTextView);
             jobTitle.setText(employee.getJobTitle());
 
+            //Sets the ListView to display the employee's assigned equipment
             if (arrayJSON != null) {
                 // Parse ArrayList from JSON
                 TypeToken<ArrayList<Equipment>> token = new TypeToken<ArrayList<Equipment>>() {};
@@ -62,20 +66,25 @@ public class ViewEmployeeActivity extends AppCompatActivity {
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.list_view, R.id.textView, displayEquipment);
                 final ListView EquipmentDisplay = (ListView) findViewById(R.id.viewEmployeeAssignedEquipmentListView);
                 EquipmentDisplay.setAdapter(arrayAdapter);
+
+                //Sets the spinner to have all available equipment to add to the Employee Object
                 Spinner addRemoveEquipment = (Spinner)findViewById(R.id.employeeAddRemoveEquipmentSpinner);
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, allEquipment);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 addRemoveEquipment.setAdapter(adapter);
             }
+
+            //Sets the employee notes
             TextView notes = (TextView) findViewById(R.id.viewEmployeeNotesEditText);
             notes.setText(employee.getNotes());
 
+            //Sends data to ViewEquipmentActivity so the equipment info can be displayed
             ListView EquipmentDisplay = (ListView) findViewById(R.id.viewEmployeeAssignedEquipmentListView);
             EquipmentDisplay.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         Gson gson = new Gson();
-                        String equipmentJSON = gson.toJson((String) allEquipment.get(i));
+                        String equipmentJSON = gson.toJson(allEquipment.get(i));
 
                         // Create intent
                         Intent intent = new Intent(ViewEmployeeActivity.this, ViewEquipmentActivity.class);
