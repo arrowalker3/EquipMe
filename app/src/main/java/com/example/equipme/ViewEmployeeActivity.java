@@ -124,8 +124,9 @@ public class ViewEmployeeActivity extends AppCompatActivity {
         hold = employee;
     }
 
-    public void saveNotes(Employee employee, String notes){
-        MainActivity.getmInstanceActivity().updateNotes(employee, notes);
+    public void saveNotes(View view){
+        hold = (Employee) MainActivity.getmInstanceActivity().updateNotes(hold, );
+        Toast.makeText(ViewEmployeeActivity.this, "Notes Saved",Toast.LENGTH_LONG).show();
     }
 }
 

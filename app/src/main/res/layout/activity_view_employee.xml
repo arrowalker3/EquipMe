@@ -94,6 +94,7 @@
         <Button
             android:id="@+id/updateNotesButton"
             style="@style/App_ButtonStyle"
+            android:onClick="saveNotes"
             android:text="@string/saveNotes" />
 
 
