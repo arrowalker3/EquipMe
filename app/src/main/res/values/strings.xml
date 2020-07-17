@@ -38,5 +38,4 @@
     <string name="equipment_type_prompt">Choose equipment type</string>
 
     <string name="assigned_to_prompt">Choose employee</string>
-    <string name="no_assignment">No one assigned</string>
 </resources>

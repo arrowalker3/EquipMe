@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Load fake lists
+        // Load fake lists (For Debugging only)
         equipmentList = makeFakeEquipment();
         employeeList = makeFakeEmployees();
 
