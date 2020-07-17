@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -125,7 +126,7 @@ public class ViewEmployeeActivity extends AppCompatActivity {
     }
 
     public void saveNotes(View view){
-        hold = (Employee) MainActivity.getmInstanceActivity().updateNotes(hold, );
+        hold = (Employee) MainActivity.getmInstanceActivity().updateNotes(hold, ((EditText)findViewById(R.id.viewEmployeeNotesEditText)).getText().toString());
         Toast.makeText(ViewEmployeeActivity.this, "Notes Saved",Toast.LENGTH_LONG).show();
     }
 }
