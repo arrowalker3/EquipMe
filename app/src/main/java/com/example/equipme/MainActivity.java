@@ -436,11 +436,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void addEquipmentToEmployee(Equipment toAdd, Employee toGive) {
+    public Employee addEquipmentToEmployee(Equipment toAdd, Employee toGive) {
+        ArrayList<Equipment> list = new ArrayList<>();
+        list.add(toAdd);
+        toGive.addEquipment(list);
         return toGive;
     }
 
-    public void removeEquipmentFromEmployee(Equipment toRemove, Employee toTake){
+    public Employee removeEquipmentFromEmployee(Equipment toRemove, Employee toTake){
 
     }
 }
