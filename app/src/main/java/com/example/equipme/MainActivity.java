@@ -474,6 +474,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void updateNotes(Displayable toUpdate, String notes) {
-
+        if (toUpdate.isEmployee() == true) {
+            Employee employee = (Employee) toUpdate;
+            employee.setNotes(notes);
+        } else {
+            Equipment equipment = (Equipment) toUpdate;
+            equipment.setNotes(notes);
+        }
     }
 }
