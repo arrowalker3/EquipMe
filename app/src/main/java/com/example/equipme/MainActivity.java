@@ -439,4 +439,8 @@ public class MainActivity extends AppCompatActivity {
     public void addEquipmentToEmployee(Equipment toAdd, Employee toGive) {
         return toGive;
     }
+
+    public void removeEquipmentFromEmployee(Equipment toRemove, Employee toTake){
+
+    }
 }

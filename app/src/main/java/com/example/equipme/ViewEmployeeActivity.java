@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -20,17 +21,22 @@ public class ViewEmployeeActivity extends AppCompatActivity {
 
     ArrayList<String> displayEquipment;
     ArrayList<String> allEquipment;
+    ArrayList<Equipment> equipmentArrayList;
+    String arrayJSON;
+    String employeeData;
+    Employee hold;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_employee);
 
-        String employeeData = getIntent().getStringExtra("employeeData");
-        String arrayJSON = getIntent().getStringExtra("equipmentArrayList");
+        employeeData = getIntent().getStringExtra("employeeData");
+        arrayJSON = getIntent().getStringExtra("equipmentArrayList");
 
         if (employeeData != null) {
             Gson gson = new Gson();
-            Employee employee = gson.fromJson(employeeData, Employee.class);
+            final Employee employee = gson.fromJson(employeeData, Employee.class);
+            hold = employee;
 
             //Sets the employee name
             TextView name = (TextView) findViewById(R.id.viewEmployeeNameTextView);
@@ -52,7 +58,8 @@ public class ViewEmployeeActivity extends AppCompatActivity {
             if (arrayJSON != null) {
                 // Parse ArrayList from JSON
                 TypeToken<ArrayList<Equipment>> token = new TypeToken<ArrayList<Equipment>>() {};
-                ArrayList<Equipment> equipmentArrayList = gson.fromJson(arrayJSON, token.getType());
+                final ArrayList<Equipment> equipmentArrayList = gson.fromJson(arrayJSON, token.getType());
+                this.equipmentArrayList = equipmentArrayList;
                 displayEquipment = new ArrayList<>();
                 allEquipment = new ArrayList<>();
                 for (int i = 0; i < employee.getEquipment().size(); i++) {
@@ -72,29 +79,41 @@ public class ViewEmployeeActivity extends AppCompatActivity {
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, allEquipment);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 addRemoveEquipment.setAdapter(adapter);
+
+                //Sends data to ViewEquipmentActivity so the equipment info can be displayed
+                EquipmentDisplay.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        MainActivity.getmInstanceActivity().viewEquipmentStart(employee.getEquipment().get(i));
+                    }
+                });
             }
 
             //Sets the employee notes
             TextView notes = (TextView) findViewById(R.id.viewEmployeeNotesEditText);
             notes.setText(employee.getNotes());
-
-            //Sends data to ViewEquipmentActivity so the equipment info can be displayed
-            ListView EquipmentDisplay = (ListView) findViewById(R.id.viewEmployeeAssignedEquipmentListView);
-            EquipmentDisplay.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Gson gson = new Gson();
-                        String equipmentJSON = gson.toJson(allEquipment.get(i));
-
-                        // Create intent
-                        Intent intent = new Intent(ViewEmployeeActivity.this, ViewEquipmentActivity.class);
-                        intent.putExtra("equipmentData", equipmentJSON);
-
-                        // Start Activity
-                        startActivity(intent);
-                    }
-            });
         }
+    }
+    public void addEquipment(View view){
+        Toast.makeText(ViewEmployeeActivity.this, "Equipment Added! Yay",Toast.LENGTH_LONG).show();
+
+        Spinner addRemoveEquipment = (Spinner)findViewById(R.id.employeeAddRemoveEquipmentSpinner);
+        int position = addRemoveEquipment.getSelectedItemPosition();
+        MainActivity.getmInstanceActivity().addEquipmentToEmployee(equipmentArrayList.get(position), hold);
+    }
+
+    public void removeEquipment(View view){
+        Toast.makeText(ViewEmployeeActivity.this, "Equipment removed, booo",Toast.LENGTH_LONG).show();
+
+        Spinner addRemoveEquipment = (Spinner)findViewById(R.id.employeeAddRemoveEquipmentSpinner);
+        int position = addRemoveEquipment.getSelectedItemPosition();
+        MainActivity.getmInstanceActivity().addEquipmentToEmployee(equipmentArrayList.get(position), hold);
+    }
+
+    public void updateListView(View view){
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.list_view, R.id.textView, displayEquipment);
+        final ListView EquipmentDisplay = (ListView) findViewById(R.id.viewEmployeeAssignedEquipmentListView);
+        EquipmentDisplay.setAdapter(arrayAdapter);
     }
 }
 
