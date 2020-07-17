@@ -123,5 +123,9 @@ public class ViewEmployeeActivity extends AppCompatActivity {
         EquipmentDisplay.setAdapter(arrayAdapter);
         hold = employee;
     }
+
+    public void saveNotes(Employee employee, String notes){
+        MainActivity.getmInstanceActivity().updateNotes(employee, notes);
+    }
 }
 
