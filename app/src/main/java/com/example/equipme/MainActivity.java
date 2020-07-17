@@ -437,13 +437,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public Employee addEquipmentToEmployee(Equipment toAdd, Employee toGive) {
+        Employee changedEmployee = new Employee();
+        boolean found = false;
+        for (int i = 0; i < employeeList.size() && !found; i++) {
+            if (toGive.getMyKey().equals(employeeList.get(i).getMyKey())) {
+                changedEmployee = employeeList.get(i);
+                found = true;
+            }
+        }
         ArrayList<Equipment> list = new ArrayList<>();
         list.add(toAdd);
-        toGive.addEquipment(list);
-        return toGive;
+        changedEmployee.addEquipment(list);
+
+        return changedEmployee;
     }
 
     public Employee removeEquipmentFromEmployee(Equipment toRemove, Employee toTake){
-
+        return toTake;
     }
 }
