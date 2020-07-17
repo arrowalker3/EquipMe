@@ -435,4 +435,8 @@ public class MainActivity extends AppCompatActivity {
         // Start Activity
         startActivity(intent);
     }
+
+    public void addEquipmentToEmployee(Equipment toAdd, Employee toGive) {
+
+    }
 }
