@@ -436,7 +436,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void addEquipmentToEmployee(Equipment toAdd, Employee toGive) {
-
+    public Employee addEquipmentToEmployee(Equipment toAdd, Employee toGive) {
+        return toGive;
     }
 }
