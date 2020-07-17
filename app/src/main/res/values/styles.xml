@@ -17,20 +17,17 @@
     </style>
 
     <style name="App_SpinnerStyle" parent="android:Widget.Spinner">
-        <item name="android:layout_gravity">fill_horizontal</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_margin">16dp</item>
     </style>
 
     <style name="App_ButtonStyle" parent="android:Widget.Button">
-        <item name="android:layout_gravity">fill_horizontal</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">16dp</item>
     </style>
 
     <style name="App_TextViewStyle" parent="android:Widget.TextView">
-        <item name="android:layout_gravity">fill_horizontal</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_margin">16dp</item>
@@ -38,7 +35,6 @@
     </style>
 
     <style name="App_ListViewStyle" parent="android:Widget.ListView">
-        <item name="android:layout_gravity">fill_horizontal</item>
         <item name="android:layout_height">300dp</item>
         <item name="android:layout_margin">16dp</item>
         <item name="android:gravity">top|left</item>
@@ -46,9 +42,13 @@
     </style>
 
     <style name="App_SearchViewStyle" parent="android:Widget.Material.SearchView">
-        <item name="android:layout_gravity">fill_horizontal</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_margin">16dp</item>
+        <item name="android:gravity">top|left</item>
+    </style>
+
+    <style name="HoldValues">
+        <item name="android:layout_gravity">fill_horizontal</item>
         <item name="android:gravity">top|left</item>
     </style>
 

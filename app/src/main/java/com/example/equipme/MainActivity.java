@@ -51,7 +51,19 @@ public class MainActivity extends AppCompatActivity {
         searchView = findViewById(R.id.searchView);
         listView = findViewById(R.id.mainDisplay);
 
+        /**************************************************************************
+         * SET ON QUERY TEXT LISTENER
+         *
+         * Sets the listener for interaction with the searchview.
+         **************************************************************************/
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            /**************************************************************************
+             * ON QUERY TEXT SUBMIT
+             *
+             * Contains code for what to do when the user presses submit button while
+             * typing in the searchview
+             **************************************************************************/
             @Override
             public boolean onQueryTextSubmit(String query) {
                 if(currentDisplayList.contains(query)){
@@ -61,6 +73,13 @@ public class MainActivity extends AppCompatActivity {
                 }
                 return false;
             }
+
+            /**************************************************************************
+             * ON QUERY TEXT CHANGE
+             *
+             * Filters contents of main display every time the user changes text in the
+             * searchview, whether by adding or removing characters
+             **************************************************************************/
             @Override
             public boolean onQueryTextChange(String newText) {
                 arrayAdapter.getFilter().filter(newText);
@@ -84,6 +103,9 @@ public class MainActivity extends AppCompatActivity {
             equipmentList.add(selectedEquipment);
         }
 
+        /**************************************************************************
+         * Set on click listener for create equipment button
+         **************************************************************************/
         createEquipmentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -258,7 +280,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /***********************************************************************
-     * Create array of employees to test list view
+     * Create array of employees to test list view (Debugging purposes only)
      **********************************************************************/
     public ArrayList<Employee> makeFakeEmployees() {
         ArrayList<Employee> listOfEmployees = new ArrayList<>();
@@ -289,20 +311,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /***********************************************************************
-     * Create array of equipment to test list view
+     * Create array of equipment to test list view (Debugging purposes only)
      **********************************************************************/
     public ArrayList<Equipment> makeFakeEquipment() {
         ArrayList<Equipment> listOfEquipment = new ArrayList<>();
 
-        Equipment equipmentToAdd = new Equipment("Apple", "Phone", "12345", "None", new Date(), "");
+        Equipment equipmentToAdd = new Equipment("Apple", "Phone", "12345", "No one assigned", new Date(), "");
         listOfEquipment.add(equipmentToAdd);
-        equipmentToAdd = new Equipment("Android", "Phone", "43", "None", new Date(), "");
+        equipmentToAdd = new Equipment("Android", "Phone", "43", "No one assigned", new Date(), "");
         listOfEquipment.add(equipmentToAdd);
-        equipmentToAdd = new Equipment("HP", "Laptop", "sdf23466", "None", new Date(), "A bit dinged up");
+        equipmentToAdd = new Equipment("HP", "Laptop", "sdf23466", "No one assigned", new Date(), "A bit dinged up");
         listOfEquipment.add(equipmentToAdd);
-        equipmentToAdd = new Equipment("Dell", "Printer", "456765", "None", new Date(), "No issues");
+        equipmentToAdd = new Equipment("Dell", "Printer", "456765", "No one assigned", new Date(), "No issues");
         listOfEquipment.add(equipmentToAdd);
-        equipmentToAdd = new Equipment("Apple", "Phone", "456765", "None", new Date(), "Due to replace");
+        equipmentToAdd = new Equipment("Apple", "Phone", "456765", "No one assigned", new Date(), "Due to replace");
         listOfEquipment.add(equipmentToAdd);
 
         return listOfEquipment;
@@ -310,7 +332,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**************************************************************************
-     * UPDATE LIST VIEW
+     * UPDATE LIST VIEW EMPLOYEE
      *
      * Takes the given array of Employee objects and
      * puts the Display String in the Listview
@@ -350,7 +372,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**************************************************************************
-     * UPDATE LIST VIEW EQUIPMENT
+     * FILL LIST VIEW
      *
      * Takes the currentDisplayList and uses that to fill the ListView
      **************************************************************************/

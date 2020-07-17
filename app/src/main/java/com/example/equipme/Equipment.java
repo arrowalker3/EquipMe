@@ -18,7 +18,7 @@ public class Equipment extends Displayable implements Parcelable {
      * DEFAULT CONSTRUCTOR
      **************************************************************************/
     public Equipment() {
-        this.assignedTo = "None";
+        this.assignedTo = "No one assigned";
         this.dateGiven = new Date();
     }
 

@@ -97,7 +97,7 @@ public class Employee extends Displayable {
                 if (key.equals(equipment.get(j).getMyKey())) {
                     found = true;
                     equipment.remove(j);
-                    toRemove.get(i).setAssignedTo("None");
+                    toRemove.get(i).setAssignedTo("No one assigned");
                 }
             }
         }

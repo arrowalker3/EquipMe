@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="16dp"
-        android:columnCount="1"
+        android:columnCount="2"
         android:useDefaultMargins="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,22 +25,29 @@
         <TextView
             android:id="@+id/viewEmployeeNameTextView"
             style="@style/App_TextViewStyle"
-            android:layout_height="wrap_content"
+            android:layout_width="160dp"
+            android:layout_height="44dp"
             android:text="@string/view_employee_name_text_view" />
 
         <TextView
             android:id="@+id/viewEmployeeEmailTextView"
             style="@style/App_TextViewStyle"
+            android:layout_width="160dp"
+            android:layout_height="44dp"
             android:text="@string/view_employee_email_text_view" />
 
         <TextView
             android:id="@+id/viewEmployeeNumberTextView"
             style="@style/App_TextViewStyle"
+            android:layout_width="160dp"
+            android:layout_height="44dp"
             android:text="@string/view_employee_number_text_view" />
 
         <TextView
             android:id="@+id/viewEmployeeJobTitleTextView"
             style="@style/App_TextViewStyle"
+            android:layout_width="160dp"
+            android:layout_height="44dp"
             android:text="@string/view_employee_job_title_text_view" />
 
         <TextView
@@ -50,7 +57,8 @@
 
         <ListView
             android:id="@+id/viewEmployeeAssignedEquipmentListView"
-            style="@style/App_ListViewStyle" />
+            style="@style/App_ListViewStyle"
+            android:layout_columnSpan="2"/>
 
         <TextView
             android:id="@+id/employeeAddRemoveEquipmentTextView"
@@ -59,23 +67,25 @@
 
         <Spinner
             android:id="@+id/employeeAddRemoveEquipmentSpinner"
-            style="@style/App_SpinnerStyle" />
-
-        <Button
-            android:id="@+id/addEquipmentButton"
-            style="@style/App_ButtonStyle"
-            android:text="@string/plus" />
+            style="@style/App_SpinnerStyle"
+            android:layout_columnSpan="2"
+            android:layout_width="match_parent"/>
 
         <Button
             android:id="@+id/removeEquipmentButton"
             style="@style/App_ButtonStyle"
             android:text="@string/minus" />
 
+        <Button
+            android:id="@+id/addEquipmentButton"
+            style="@style/App_ButtonStyle"
+            android:text="@string/plus" />
+
         <EditText
             android:id="@+id/viewEmployeeNotesEditText"
             style="@style/App_EditTextStyle"
             android:layout_rowSpan="3"
-            android:layout_columnSpan="1"
+            android:layout_columnSpan="2"
             android:minLines="10"
             android:text="@string/employee_notes_text_view" />
 
