@@ -96,6 +96,11 @@
                 android:minLines="10"
                 android:text="@string/equipment_notes_text_view" />
 
+            <Button
+                android:id="@+id/updateNotesButton"
+                style="@style/App_ButtonStyle"
+                android:text="@string/saveNotes" />
+
 
 
         </GridLayout>
