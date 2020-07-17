@@ -445,6 +445,11 @@ public class MainActivity extends AppCompatActivity {
                 found = true;
             }
         }
+
+        for(int x = 0; x < changedEmployee.getEquipment().size(); x++){
+            if (changedEmployee.getEquipment().get(x).getMyKey().equals(toAdd.getMyKey()))
+                return changedEmployee;
+        }
         ArrayList<Equipment> list = new ArrayList<>();
         list.add(toAdd);
         changedEmployee.addEquipment(list);
