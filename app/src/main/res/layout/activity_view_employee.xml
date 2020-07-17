@@ -74,11 +74,13 @@
         <Button
             android:id="@+id/removeEquipmentButton"
             style="@style/App_ButtonStyle"
+            android:onClick="removeEquipment"
             android:text="@string/minus" />
 
         <Button
             android:id="@+id/addEquipmentButton"
             style="@style/App_ButtonStyle"
+            android:onClick="addEquipment"
             android:text="@string/plus" />
 
         <EditText
