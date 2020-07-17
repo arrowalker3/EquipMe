@@ -99,7 +99,7 @@ public class ViewEmployeeActivity extends AppCompatActivity {
 
         Spinner addRemoveEquipment = (Spinner)findViewById(R.id.employeeAddRemoveEquipmentSpinner);
         int position = addRemoveEquipment.getSelectedItemPosition();
-        MainActivity.getmInstanceActivity().addEquipmentToEmployee(equipmentArrayList.get(position), hold);
+        MainActivity.getmInstanceActivity().addEquipmentToEmployee(equipmentArrayList.get(position), hold);;
     }
 
     public void removeEquipment(View view){
@@ -107,7 +107,7 @@ public class ViewEmployeeActivity extends AppCompatActivity {
 
         Spinner addRemoveEquipment = (Spinner)findViewById(R.id.employeeAddRemoveEquipmentSpinner);
         int position = addRemoveEquipment.getSelectedItemPosition();
-        MainActivity.getmInstanceActivity().addEquipmentToEmployee(equipmentArrayList.get(position), hold);
+        MainActivity.getmInstanceActivity().removeEquipmentFromEmployee(equipmentArrayList.get(position), hold);
     }
 
     public void updateListView(View view){
